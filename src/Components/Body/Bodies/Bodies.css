@@ -1,0 +1,5 @@
+.Bodies {
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 25% 75%;
+}

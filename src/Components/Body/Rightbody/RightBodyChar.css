@@ -1,0 +1,28 @@
+.rightbodychart {
+  background-color: #eff6ff;
+  /* background-color: black; */
+  padding: 12px;
+}
+.mixed-chart {
+  background-color: white;
+}
+.stockinfo {
+  padding: 4px 12px;
+}
+.companyname {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.exchange {
+  font-size: 10px;
+}
+.stockimg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stockimages {
+  object-fit: contain;
+  height: 400px;
+}

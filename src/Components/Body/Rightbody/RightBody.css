@@ -1,0 +1,137 @@
+.Rightbody,
+.rightheader {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  position: relative;
+}
+.rightheaderleft {
+  display: flex;
+  align-items: center;
+}
+.rightheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rightheaderlefticon {
+  padding: 6px;
+}
+.WidgetsIcon {
+  color: rgb(35, 127, 206);
+}
+.rightbodycontent {
+  height: 100%;
+  padding: 8px;
+}
+
+.Inputsearch {
+  width: 360px;
+  background-color: #eff6ff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 4px;
+  height: 400px;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  z-index: 100;
+}
+.inputtserch {
+  display: block;
+  height: 35px;
+  padding: 10px;
+  font-size: 0.9rem;
+  flex: 1;
+  outline: none;
+  border: 1px solid #cbd5e1;
+  background-color: #eff6ff;
+  transition-duration: 220ms;
+}
+.closeIconButton {
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 220ms;
+  margin-right: 12px;
+}
+.closeIconButton:hover {
+  background-color: #dbeafe;
+  border-radius: 50%;
+}
+.inputtserch:hover {
+  border-color: #2563eb;
+}
+.inputtserch:focus {
+  border-color: #1d4ed8;
+}
+.crossInputIcon {
+  /* margin-right: 18px; */
+  color: #94a3b8;
+}
+.InputSearch_Search {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #eff6ff;
+}
+.inputbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+.serchstocks {
+  position: absolute;
+  right: 5%;
+  height: 17px !important;
+  width: 17px !important;
+  color: #94a3b8;
+}
+::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+.InputSearch_Search {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.InputSearch_recomm {
+  padding: 12px 0px;
+}
+.stockfilter {
+  font-size: 18px;
+  padding: 12px 19px;
+  cursor: pointer;
+  transition-duration: 220ms;
+  color: #1f2937;
+}
+.stockfilter:hover {
+  background-color: #bfdbfe;
+}
+.Write3word {
+  width: 60%;
+  margin: auto;
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 12px;
+}
+.notfoundcontainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.notfoundcontainer > .notfoundimage {
+  width: 80%;
+  display: block;
+  background-position: center;
+}

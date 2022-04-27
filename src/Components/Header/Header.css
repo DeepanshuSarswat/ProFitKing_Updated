@@ -1,4 +1,6 @@
 .Header {
-  background-color: aliceblue;
+  background-color: rgb(35, 127, 206);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   height: 10vh;
 }
