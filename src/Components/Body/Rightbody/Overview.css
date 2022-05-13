@@ -1,0 +1,269 @@
+.Heading-overview {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 12px;
+}
+.Overview {
+  padding-bottom: 4px;
+  position: relative;
+}
+.Heading-overview-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24px;
+  cursor: pointer;
+}
+.companyname,
+.company-symbol {
+  font-size: 14px;
+  font-weight: 600;
+}
+.nse-eq {
+  font-size: 10px;
+}
+.overview-close-icon {
+  width: 22px !important;
+  height: 22px !important;
+}
+.basic-overview {
+  margin: 3px;
+  border: 1px solid #cbd5e1;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+}
+.current-price {
+  text-align: right;
+  font-size: 14px;
+  color: black;
+}
+.chnage-in-price {
+  font-size: 11px;
+}
+.market-status {
+  margin: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+}
+.makefavorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buy-bttn {
+  width: 30%;
+  background-color: #65a30d;
+  text-align: center;
+  padding: 4px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  transition-duration: 260ms;
+}
+.buy-bttn:hover {
+  background-color: #84cc16;
+}
+.sel-btn {
+  width: 30%;
+  background-color: #dc2626;
+  text-align: center;
+  padding: 4px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+}
+.sel-btn:hover {
+  background-color: #ef4444;
+}
+.market-status-overview {
+  height: 46vh;
+
+  overflow: auto;
+}
+
+.markt-stats {
+  border: 1px solid #cbd5e1;
+  margin: 2px auto;
+  width: 95%;
+}
+.markt-stats-header {
+  font-size: 12px;
+  color: #525252;
+  padding: 2px 6px;
+  font-weight: 700;
+  border-bottom: 1px solid #cbd5e1;
+  background-color: white;
+}
+.markt-stats-body {
+  background-color: white;
+  border-bottom: 1px solid #cbd5e1;
+  padding: 16px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.close,
+.lower-Circuit,
+.atp,
+.open,
+.Upper-Circuit,
+.volume {
+  font-size: 10px;
+  font-weight: 600;
+}
+.open-div,
+.upper-circut-div,
+.close-div,
+.lower-circut-div {
+  margin-bottom: 16px;
+}
+.markt-depth {
+  border: 1px solid #cbd5e1;
+  margin: 2px auto;
+  width: 95%;
+}
+.markt-depth-body-left,
+.markt-depth-body-right {
+  width: 50%;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 4px;
+}
+.markt-depth-body-left {
+  margin-right: 9px;
+}
+.depth-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 650;
+  color: #525252;
+}
+.depth-body-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bid-price {
+  color: #16a34a;
+}
+.ask-price {
+  color: #dc2626;
+}
+
+.buyorsell {
+  margin: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  padding: 16px 12px;
+  border: 1px solid #cbd5e1;
+}
+.buy-bttns {
+  width: 45%;
+  background-color: #65a30d;
+  text-align: center;
+  padding: 4px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  transition-duration: 260ms;
+}
+.buy-bttnss {
+  background-color: white;
+  color: #65a30d;
+  width: 45%;
+  text-align: center;
+  padding: 4px;
+  border-radius: 5px;
+  font-weight: 700;
+  transition-duration: 260ms;
+}
+.buy-bttnss:hover {
+  background-color: #65a30d;
+  color: white;
+}
+.sel-btnss {
+  width: 45%;
+
+  background-color: #dc2626;
+  color: white;
+  text-align: center;
+  padding: 4px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+}
+.sel-btns {
+  width: 45%;
+  background-color: white;
+
+  color: #dc2626;
+  text-align: center;
+  padding: 4px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  color: #dc2626;
+  transition-duration: 260ms;
+}
+.sel-btns:hover {
+  background-color: #dc2626;
+  color: white;
+}
+
+.takesomeinputs {
+  margin: 12px 4px;
+}
+.takesomeinput {
+  margin: 12px 0px;
+}
+.place-orders-buy {
+  padding: 12px;
+  background-color: #65a30d;
+  position: absolute;
+  bottom: -48px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  transition-duration: 260ms;
+}
+.place-orders-sell {
+  padding: 12px;
+  background-color: #dc2626;
+  position: absolute;
+  bottom: -48px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  transition-duration: 260ms;
+}
+.place-orders:hover {
+  background-color: #4d7c0f;
+}
+.place-ordr {
+  width: 60%;
+  color: white;
+  font-weight: 650;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.deepanshu {
+  color: pink;
+}

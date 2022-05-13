@@ -1,6 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap");
 .Header {
-  background-color: rgb(35, 127, 206);
+  /* background-color: rgb(35, 127, 206); */
+  background-color: #1976d2;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   height: 10vh;
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+.Header_left {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border: 1px solid #e5e5e5;
+  border-top: 0;
+}
+.NIFTY,
+.sensex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  color: #e5e5e5;
+  font-size: 10px;
+}
+.NIFTY {
+  border-right: 1px solid #e5e5e5;
+}
+.ni-fty {
+  color: #fafafa;
+  font-weight: 600;
+}
+.nifty-price-live {
+  font-size: 18px;
+  text-align: left;
+}
+.nifty-price {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.rate {
+  font-size: 12px;
+  margin-left: auto;
+}
+.Header_right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Logo {
+  font-family: "Bebas Neue", cursive;
+  padding: 0 12px;
+  font-size: larger;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Header-right-left {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.Header-right-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-header {
+  margin-right: 30px;
+}
+.Links {
+  text-decoration: none;
+}
+.funds-data {
+  box-shadow: inset 0 0 0 2px #0369a1;
+  position: absolute;
+  top: 10vh;
+  left: 25%;
+  height: 90vh;
+  z-index: 1;
+  width: 75%;
+  /* background-color: yellow; */
+  display: grid;
+  /* align-content: center;
+  justify-content: center; */
+  grid-template-columns: 20% 80%;
+}
+.funds-left {
+  background-color: white;
+}
+.funds-right {
+  background-color: white;
+  border-left: 2px solid #e5e5e5;
+  overflow: auto;
+}
+.Securities {
+  text-align: left;
+  color: #1976d2;
+  font-size: 18px;
+  font-weight: 650;
+}
+.closeiconn {
+  padding: 26px 16px;
+  cursor: pointer;
+}
+
+.Securities {
+  padding: 20px 16px;
+}
+.my-funds {
+  font-size: 12px;
+  color: #27272a;
+}
+.Securiti {
+  color: #171717;
+  font-size: 26px;
+  font-weight: 600;
+}
+.funds-right-header {
+  background-color: #e0f2fe;
+  padding: 20px 16px;
+  margin-bottom: 22px;
+}
+.close-iconn {
+  margin-right: auto;
+  height: 22px !important;
+  width: 22px !important;
+  color: #475569;
+}
+.fund-right-body {
+  width: 98%;
+  margin: auto;
+  background-color: #f0f9ff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 22px;
+}
+.fund-right-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.fund-right-body-left,
+.fund-right-body-right {
+  width: 48%;
+}
+
+.Avlble-trade {
+  font-size: 18px;
+  font-weight: 600;
+}
+.right-body-fund-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Avlble-trade {
+  padding: 9px 0px;
+}
+.tm-fund-box {
+  padding: 8px 0px;
+  color: #57534e;
+}
+.fund-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 18px 0px;
+}
+.total-funds {
+  text-align: right;
+  font-size: 1.5rem;
+  padding: 18px;
+  font-weight: 600;
+}
+.funss-datas-z {
+  z-index: -1;
+}
+.funds-datas {
+  z-index: 100;
 }

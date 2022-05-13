@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap");
+
+.Loginpage-header {
+  /* background-color: rgb(35, 127, 206); */
+  /* background-color: #1976d2; */
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 16px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Login-h-l {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: "Bebas Neue", cursive;
+  color: #1976d2;
+}
+.pkicon {
+  height: 38px !important;
+  width: 38px !important;
+}
+.lrn {
+  margin-top: 12px;
+  font-size: 1rem;
+
+  margin-left: 16px;
+
+  font-family: sans-serif;
+}
+
+a {
+  color: #1976d2;
+  text-decoration: none;
+}
+.Login-h-r {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.creat-acc-btn {
+  padding: 10px 14px;
+  border-radius: 16px;
+  background-color: #1976d2;
+  color: white;
+  border: 0;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition-duration: 260ms;
+}
+.creat-acc-btn-link {
+  color: white;
+}
+.creat-acc-btn:hover {
+  background-color: #0ea5e9;
+  font-weight: 650;
+}
+.creat-acc,
+.signin {
+  margin-right: 18px;
+}
+.singn-btn,
+.lrn {
+  padding: 10px 14px;
+  border-radius: 16px;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #0a66c2;
+
+  color: #1976d2;
+  border: 0;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition-duration: 260ms;
+}
+.singn-btn:hover,
+.lrn:hover,
+.strt-investt-btn:hover {
+  background-color: rgba(112, 181, 249, 0.15);
+  box-shadow: inset 0 0 0 2px #0a66c2;
+}
+.pk-span {
+  color: #0a66c2;
+}
+.Body-loginpage {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 70%;
+  align-content: center;
+  justify-content: space-between;
+  margin: auto;
+  height: 80vh;
+}
+
+.login-body-right > .invest-img {
+  width: 100%;
+}
+.login-body-heading {
+  font-size: 2.5rem;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.pk-simple {
+  color: #3f3f46;
+  font-size: 1.3rem;
+  word-spacing: 2px;
+}
+.strt-investt {
+  margin-top: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.strt-investt-btn {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #0a66c2;
+  font-size: 1.5rem;
+  color: #1976d2;
+  border: 0;
+  width: 80%;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition-duration: 260ms;
+}

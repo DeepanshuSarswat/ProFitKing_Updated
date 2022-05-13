@@ -1,8 +1,11 @@
 .Rightbody,
 .rightheader {
+  position: relative;
+}
+.rightheader {
+  z-index: 1;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  position: relative;
 }
 .rightheaderleft {
   display: flex;
@@ -12,7 +15,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow-y: auto;
 }
+.rightheaders {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  position: relative;
+}
+
 .rightheaderlefticon {
   padding: 6px;
 }
@@ -20,8 +34,14 @@
   color: rgb(35, 127, 206);
 }
 .rightbodycontent {
-  height: 100%;
-  padding: 8px;
+  background-color: #eff6ff;
+  position: relative;
+}
+.rightbodycontents {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  transform: translateX(0);
+  height: 75vh;
 }
 
 .Inputsearch {
@@ -134,4 +154,40 @@
   width: 80%;
   display: block;
   background-position: center;
+}
+.symbolDetails {
+  background-color: white;
+  width: 200px;
+  margin-left: 4px;
+  margin-top: 4px;
+  /* height: 30vh; */
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 2px;
+  position: absolute;
+  top: 56px;
+  left: 0px;
+  z-index: 100;
+  margin: 3px 0px;
+}
+.openoverview {
+  transform: translateX(101%);
+  transition: transform 4.5s ease-in;
+  position: absolute;
+}
+.buy-sell-overview {
+  z-index: 100;
+  background-color: #eff6ff;
+
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.right-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 10px;
+  z-index: 1;
+  /* z-index: 10001; */
 }

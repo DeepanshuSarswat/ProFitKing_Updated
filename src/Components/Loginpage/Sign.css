@@ -1,0 +1,62 @@
+.Sig-n {
+  height: 100vh;
+}
+.Sign-in-user {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, #3c404326 0px 1px 3px 1px;
+  width: 40%;
+  margin: auto;
+  margin-top: 12px;
+  padding: 24px 16px;
+}
+.Sign-h-l {
+  padding: 16px;
+}
+.forgot-pin {
+  text-align: right;
+  color: #0a66c2;
+
+  margin-left: auto;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0px;
+  border-radius: 22px;
+  cursor: pointer;
+  font-weight: 600;
+  transition-duration: 220ms;
+  margin-bottom: 22px;
+}
+
+.forgot-pin:hover {
+  background-color: #0a66c2;
+  color: white;
+  font-weight: 620;
+}
+.Hii {
+  color: #111827;
+  font-size: 1.5rem;
+  padding-left: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.welcome {
+  color: #111827;
+  font-size: 16px;
+  padding-left: 12px;
+  margin-bottom: 32px;
+}
+.Enter-digit {
+  color: #111827;
+
+  padding-left: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.input-six {
+  padding-left: 12px;
+  margin-bottom: 35px;
+}
+.Continue-btn {
+  padding-left: 12px;
+}

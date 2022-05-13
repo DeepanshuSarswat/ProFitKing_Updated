@@ -2,14 +2,23 @@ import React from "react";
 import Chart from "react-apexcharts";
 import { useEffect, useState } from "react";
 import "./RightBodyChar.css";
-function RightBodyChart({ stocksymbol, companyname, exchange }) {
-  console.log(stocksymbol);
+function RightBodyChart({
+  stocksymbol,
+  companyname,
+  exchange,
+  timeframe,
+  chartype,
+  chartchange,
+  openholding,
+}) {
   let arrr = [];
+  let closingprice = [];
+  let closeDate = [];
   const [chartData, setchartData] = useState([]);
-  // const [symbolvalue, setsymbolvalue] = useState("");
-  // const [symbol, setsymbol] = useState("");
   const [symbolData, setsymbolData] = useState([]);
+  const [fetcherr, setfetcherr] = useState("");
   let symboltoname = {};
+
   let states = {
     series: [
       {
@@ -35,30 +44,32 @@ function RightBodyChart({ stocksymbol, companyname, exchange }) {
       },
     },
   };
+
   useEffect(() => {
     fetch(
-      `https://api.twelvedata.com/time_series?apikey=cc142ccd11b0460985ac8e6daff8f278&interval=1day&symbol=${stocksymbol}&outputsize=400`
+      `https://api.twelvedata.com/time_series?apikey=cc142ccd11b0460985ac8e6daff8f278&interval=${timeframe}&symbol=${stocksymbol}&outputsize=400`
     )
       .then((response) => response.json())
-      .then((data) => setchartData(data));
-  }, [stocksymbol]);
+      .then((data) => setchartData(data))
+      .catch((err) => setfetcherr(err.message));
+  }, [stocksymbol, timeframe]);
   let newData = chartData.values;
   function candelData() {
     for (let i = 0; i < newData?.length; i++) {
       const e = newData[i];
       let finalData = [e.open, e.high, e.low, e.close];
+
       let objjData = {
         x: new Date(e.datetime),
         y: finalData,
       };
+      closingprice.push(e.close);
+      closeDate.push(e.datetime);
       arrr.push(objjData);
     }
   }
   candelData();
-  // const submitData = (e) => {
-  //   e.preventDefault();
-  //   setsymbolvalue(symbol);
-  // };
+
   let finalData = symbolData?.data;
   let finalDatas = finalData?.filter((e) => {
     return e.country == "United States";
@@ -67,18 +78,30 @@ function RightBodyChart({ stocksymbol, companyname, exchange }) {
     let eedaa = e.name.replace(/[, ]+/g, "", " ").trim();
     symboltoname[eedaa] = e?.symbol;
   });
-
+  let linestates = {
+    series: [
+      {
+        name: "Stock Price",
+        data: closingprice,
+      },
+    ],
+    options: {
+      chart: {
+        id: "stock",
+        group: "market",
+      },
+      xaxis: {
+        categories: closeDate,
+      },
+      stroke: {
+        curve: "smooth",
+      },
+    },
+  };
+  console.log(arrr);
   return (
     <div className="rightbodychart">
-      {/* <form onSubmit={submitData}>
-        <input
-          type="text"
-          placeholder="Enter stocks name"
-          value={symbol}
-          onChange={(e) => setsymbol(e.target.value)}
-        />
-      </form> */}
-
+      {fetcherr != "" && <p>{fetcherr}</p>}
       {stocksymbol.length > 0 ? (
         <div className="row">
           {stocksymbol.length > 0 && (
@@ -88,10 +111,13 @@ function RightBodyChart({ stocksymbol, companyname, exchange }) {
                 <p className="exchange">{exchange}</p>
               </div>
               <Chart
-                options={states.options}
-                series={states.series}
-                type="candlestick"
-                height={340}
+                options={(chartchange ? linestates : states).options}
+                series={(chartchange ? linestates : states).series}
+                type={chartype}
+                className="chartDatass"
+                height={openholding ? 160 : 355}
+                // from 355
+                // 160
               />
             </div>
           )}
@@ -106,67 +132,3 @@ function RightBodyChart({ stocksymbol, companyname, exchange }) {
 }
 
 export default RightBodyChart;
-
-// let arrr = [];
-//   const [chartData, setchartData] = useState([]);
-//   const [symbolvalue, setsymbolvalue] = useState("");
-//   const [symbol, setsymbol] = useState("");
-//   const [symbolData, setsymbolData] = useState([]);
-//   let symboltoname = {};
-//   let states = {
-//     series: [
-//       {
-//         data: arrr,
-//       },
-//     ],
-//     options: {
-//       chart: {
-//         type: "candlestick",
-//         height: 350,
-//       },
-//       title: {
-//         text: "CandleStick Chart",
-//         align: "left",
-//       },
-//       xaxis: {
-//         type: "datetime",
-//       },
-//       yaxis: {
-//         tooltip: {
-//           enabled: true,
-//         },
-//       },
-//     },
-//   };
-//   useEffect(() => {
-//     fetch(
-//       `https://api.twelvedata.com/time_series?apikey=cc142ccd11b0460985ac8e6daff8f278&interval=1day&symbol=${symbolvalue}&outputsize=400`
-//     )
-//       .then((response) => response.json())
-//       .then((data) => setchartData(data));
-//   }, [symbolvalue]);
-//   let newData = chartData.values;
-//   function candelData() {
-//     for (let i = 0; i < newData?.length; i++) {
-//       const e = newData[i];
-//       let finalData = [e.open, e.high, e.low, e.close];
-//       let objjData = {
-//         x: new Date(e.datetime),
-//         y: finalData,
-//       };
-//       arrr.push(objjData);
-//     }
-//   }
-//   candelData();
-//   const submitData = (e) => {
-//     e.preventDefault();
-//     setsymbolvalue(symbol);
-//   };
-//   let finalData = symbolData?.data;
-//   let finalDatas = finalData?.filter((e) => {
-//     return e.country == "United States";
-//   });
-//   finalDatas?.forEach((e) => {
-//     let eedaa = e.name.replace(/[, ]+/g, "", " ").trim();
-//     symboltoname[eedaa] = e?.symbol;
-//   });

@@ -1,0 +1,115 @@
+.Funamental {
+  background-color: #e0f2fe;
+}
+.fundamental-body {
+  height: 85vh;
+  overflow: auto;
+}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap");
+
+.funda-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 22px;
+}
+.Fundamental-header {
+  background-color: #1976d2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 15vh;
+  padding: 12px 22px;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.Inputsearchss {
+  width: 600px;
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 4px;
+}
+.Fundamental-header-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 4px;
+  font-family: "Bebas Neue", cursive;
+}
+.rupee-logo {
+  height: 50px !important;
+  width: 50px !important;
+}
+.funda-body-img {
+  object-fit: contain;
+  height: 400px;
+}
+.funda-body-texts {
+  text-align: center;
+  margin: 12px;
+  font-size: 26px;
+  color: #374151;
+}
+.InputSearch_recommm {
+  position: absolute;
+  right: 12px;
+  top: 13vh;
+  background-color: white;
+  z-index: 350;
+  width: 600px;
+  /* display: none; */
+  height: 300px;
+  overflow: auto;
+}
+.notfoundimage {
+  object-fit: contain;
+  height: 200px;
+}
+.InputSearch_Searchss {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.Gototop {
+  position: sticky;
+  bottom: 20px;
+
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+.Gototop > .Gotobtn {
+  display: block;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 50%;
+  background-color: #1976d2;
+  border: 1px solid;
+  margin-top: 10px;
+
+  color: white;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition-duration: 240ms;
+}
+
+.Gototop > button:hover {
+  border: 2px solid;
+  border-color: #075985;
+}

@@ -1,0 +1,24 @@
+.stepar-parents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.stepar {
+  height: 100vh;
+  width: 60%;
+  margin: auto;
+  height: 80vh;
+  padding: 12px 48px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, #3c404326 0px 1px 3px 1px;
+}
+.steparheader {
+  margin-top: 12px;
+  margin-bottom: 15%;
+}
+.step-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5%;
+}

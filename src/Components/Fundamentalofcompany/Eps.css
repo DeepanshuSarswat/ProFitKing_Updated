@@ -1,0 +1,27 @@
+.eps-share {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  display: block;
+}
+.realgdps {
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  z-index: -1;
+}
+.chartsgdp {
+  background-color: transparent;
+  color: #3f3f46;
+  padding: 16px 0px;
+  margin-top: 24px;
+}
+.eps-share {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

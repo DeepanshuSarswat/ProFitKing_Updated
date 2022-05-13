@@ -13,6 +13,9 @@ import { makeStyles } from "@mui/styles";
 import { IconButton } from "@mui/material";
 import RightBodyChart from "./RightBodyChart";
 import CloseIcon from "@mui/icons-material/Close";
+import SymbolDetail from "./SymbolDetail";
+import Overview from "./Overview";
+import Rightbodyfooter from "./Rightbodyfooter";
 
 const useStyle = makeStyles({
   formconrtrol: {
@@ -33,19 +36,53 @@ function RightBody() {
       return [];
     }
   }
+
   const [opensearch, setopensearch] = useState(false);
   const classes = useStyle();
-  const [age, setAge] = useState("");
+  const timeframecategory = [
+    "1min",
+    "5min",
+    "15min",
+    "30min",
+    "45min",
+    "1h",
+    "2h",
+    "4h",
+    "8h",
+    "1day",
+    "1week",
+    "1month",
+  ];
   const [filterData, setfilterData] = useState([]);
+  const [chartype, setcharttype] = useState("candlestick");
   const [threeword, setthreeeword] = useState(true);
   const [notfound, setnotfound] = useState(false);
   const [stocksymbol, setstocksymbol] = useState("");
   const [companyname, setcompanyname] = useState("");
   const [exchange, setexchange] = useState("");
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  let [timeframe, settimeframe] = useState("1day");
+  const [chartchange, setchartchange] = useState(false);
+  const [symbolDetails, setsymbolDetails] = useState(false);
+  const [openoverview, setopenoverview] = useState(false);
+  const [stockinnfo, setstockinfo] = useState(false);
+  const [buyorsells, setbuyorsells] = useState(false);
+  const [clickonBuy, setclickonBuy] = useState(false);
+  const [clickonSell, setclickonsell] = useState(false);
+  const [openholding, setopenholding] = useState(false);
+  const [fullscreen, setfullscreen] = useState(false);
+  const timeframeChange = (event) => {
+    settimeframe(event.target.value);
+  };
+  const candlechartChange = (event) => {
+    setcharttype(event.target.value);
+    if (event.target.value === "line") {
+      setchartchange(true);
+    } else {
+      setchartchange(false);
+    }
   };
   const [datas, setdatas] = useState(gtData());
+
   const handelfilter = (e) => {
     const searchword = e.target.value;
     if (searchword.length > 0) {
@@ -83,15 +120,26 @@ function RightBody() {
   const clickonstock = (data) => {
     datas.forEach((e) => {
       if (e.name == data) {
-        console.log(e);
+        localStorage.setItem("clickedstocks", JSON.stringify(e));
+
         setstocksymbol(e.symbol);
         setcompanyname(e.name);
         setexchange(e.exchange);
         setopensearch(false);
+        setfilterData([]);
+        setthreeeword(true);
       }
     });
   };
-  console.log(stocksymbol);
+  console.log(chartype);
+  console.log(chartchange);
+  const stockinfohanle = () => {
+    if (symbolDetails) {
+      setsymbolDetails(false);
+    } else {
+      setsymbolDetails(true);
+    }
+  };
   return (
     <div className="rightbodycontent">
       <div className="Rightbody">
@@ -99,12 +147,17 @@ function RightBody() {
           <div className="rightheaderleft">
             <div className="rightheaderlefticon">
               {" "}
-              <IconButton>
+              <IconButton onClick={stockinfohanle}>
                 <WidgetsIcon className="WidgetsIcon" />
               </IconButton>
             </div>
             <div className="rightheaderlefticon">
-              <IconButton onClick={() => setopensearch(true)}>
+              <IconButton
+                onClick={() => {
+                  setopensearch(true);
+                  setsymbolDetails(false);
+                }}
+              >
                 {" "}
                 <SearchIcon />{" "}
               </IconButton>
@@ -129,17 +182,29 @@ function RightBody() {
             <div className="optiontime">
               <FormControl sx={{ m: 1, minWidth: 20 }}>
                 <Select
+                  disabled={stocksymbol == "" ? true : false}
                   className={classes.formconrtrol}
-                  value={age}
-                  onChange={handleChange}
+                  value={timeframe}
+                  onChange={(e) => timeframeChange(e)}
                   displayEmpty
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  {timeframecategory.map((data) => {
+                    return (
+                      <MenuItem value={data}>{data.toUpperCase()}</MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+              <FormControl sx={{ m: 1, minWidth: 20 }}>
+                <Select
+                  disabled={stocksymbol == "" ? true : false}
+                  className={classes.formconrtrol}
+                  value={chartype}
+                  onChange={(e) => candlechartChange(e)}
+                  displayEmpty
+                >
+                  <MenuItem value="candlestick">CANDLESTICK</MenuItem>
+                  <MenuItem value="line">LINE</MenuItem>
                 </Select>
               </FormControl>
             </div>
@@ -151,7 +216,9 @@ function RightBody() {
               <div className="closeIconButton">
                 <CloseIcon
                   className="crossInputIcon"
-                  onClick={() => setopensearch(false)}
+                  onClick={() => {
+                    setopensearch(false);
+                  }}
                 />
               </div>
 
@@ -188,7 +255,7 @@ function RightBody() {
                   </p>
                 </>
               )}
-              {filterData?.map((e, key) => {
+              {filterData?.slice(0, 15).map((e, key) => {
                 return (
                   <p
                     className="stockfilter"
@@ -202,13 +269,55 @@ function RightBody() {
             </div>
           </div>
         )}
-        <div className="rightbodycontents">
+        {symbolDetails && (
+          <div className="symbolDetails">
+            <SymbolDetail
+              setopenoverview={setopenoverview}
+              setsymbolDetails={setsymbolDetails}
+              setstockinfo={setstockinfo}
+              setbuyorsells={setbuyorsells}
+              setclickonBuy={setclickonBuy}
+              setclickonsell={setclickonsell}
+            />
+          </div>
+        )}
+
+        <div
+          className={openoverview ? "rightbodycontents" : "rightbodycontent"}
+        >
           <RightBodyChart
             stocksymbol={stocksymbol}
             companyname={companyname}
             exchange={exchange}
+            timeframe={timeframe}
+            chartchange={chartchange}
+            chartype={chartype}
+            openholding={openholding}
           />
+          {openoverview && (
+            <div className="buy-sell-overview">
+              <Overview
+                setopenoverview={setopenoverview}
+                stockinnfo={stockinnfo}
+                buyorsells={buyorsells}
+                clickonBuy={clickonBuy}
+                clickonSell={clickonSell}
+                setstockinfo={setstockinfo}
+                setbuyorsells={setbuyorsells}
+                setclickonBuy={setclickonBuy}
+                setclickonsell={setclickonsell}
+              />
+            </div>
+          )}
         </div>
+      </div>
+      <div className="right-bottom">
+        <Rightbodyfooter
+          setopenholding={setopenholding}
+          openholding={openholding}
+          setfullscreen={setfullscreen}
+          fullscreen={fullscreen}
+        />
       </div>
     </div>
   );
