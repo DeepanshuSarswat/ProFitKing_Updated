@@ -100,62 +100,66 @@ function Header() {
           </div>
         </div>
       </div>
-      <div
-        className={`${openfunds && "funds-datas"} ${openfunds && "funds-data"}`}
-      >
-        <div className="funds-left">
-          <p className="closeiconn" onClick={closefunds}>
-            <CloseIcon className="close-iconn" />
-          </p>
-          <p className="Securities">Securities</p>
-        </div>
-        <div className="funds-right">
-          <div className="funds-right-header">
-            <p className="my-funds">My Account/Funds</p>
-            <p className="Securiti">Securities</p>
+      {openfunds && (
+        <div
+          className={`${openfunds && "funds-datas"} ${
+            openfunds && "funds-data"
+          }`}
+        >
+          <div className="funds-left">
+            <p className="closeiconn" onClick={closefunds}>
+              <CloseIcon className="close-iconn" />
+            </p>
+            <p className="Securities">Securities</p>
           </div>
-          <div className="fund-right-body">
-            <div className="fund-right-body-left">
-              <div className="right-body-fund-box">
-                <p className="Avlble-trade">Available to trade</p>
-                <p className="Avlble-trade">₹1,028.14</p>
-              </div>
-              <div className="right-body-fund-box">
-                <p className="tm-fund-box">Used margin</p>
-                <p className="tm-fund-box">₹ 0.00</p>
-              </div>
+          <div className="funds-right">
+            <div className="funds-right-header">
+              <p className="my-funds">My Account/Funds</p>
+              <p className="Securiti">Securities</p>
             </div>
+            <div className="fund-right-body">
+              <div className="fund-right-body-left">
+                <div className="right-body-fund-box">
+                  <p className="Avlble-trade">Available to trade</p>
+                  <p className="Avlble-trade">₹1,028.14</p>
+                </div>
+                <div className="right-body-fund-box">
+                  <p className="tm-fund-box">Used margin</p>
+                  <p className="tm-fund-box">₹ 0.00</p>
+                </div>
+              </div>
 
-            <div className="fund-right-body-right">
-              <div className="right-body-fund-box">
-                <p className="tm-fund-box">Total margin</p>
-                <p className="tm-fund-box">₹ 1,028.14</p>
-              </div>
-              <div className="right-body-fund-box">
-                <p className="tm-fund-box">Collateral margin </p>
-                <p className="tm-fund-box">₹ 0.00</p>
-              </div>
-              <div className="right-body-fund-box">
-                <p className="tm-fund-box">Cash margin</p>
-                <p className="tm-fund-box">₹ 1,028.14</p>
-              </div>
-              <div className="right-body-fund-box">
-                <p className="tm-fund-box">Unsettled profits</p>
-                <p className="tm-fund-box">₹ 0.00</p>
+              <div className="fund-right-body-right">
+                <div className="right-body-fund-box">
+                  <p className="tm-fund-box">Total margin</p>
+                  <p className="tm-fund-box">₹ 1,028.14</p>
+                </div>
+                <div className="right-body-fund-box">
+                  <p className="tm-fund-box">Collateral margin </p>
+                  <p className="tm-fund-box">₹ 0.00</p>
+                </div>
+                <div className="right-body-fund-box">
+                  <p className="tm-fund-box">Cash margin</p>
+                  <p className="tm-fund-box">₹ 1,028.14</p>
+                </div>
+                <div className="right-body-fund-box">
+                  <p className="tm-fund-box">Unsettled profits</p>
+                  <p className="tm-fund-box">₹ 0.00</p>
+                </div>
               </div>
             </div>
+            <div className="fund-bottom">
+              <Chart
+                options={state.options}
+                series={state.series}
+                type="pie"
+                width="500"
+              />
+            </div>
+            <p className="total-funds">Total Fund - 50,000</p>
           </div>
-          <div className="fund-bottom">
-            <Chart
-              options={state.options}
-              series={state.series}
-              type="pie"
-              width="500"
-            />
-          </div>
-          <p className="total-funds">Total Fund - 50,000</p>
         </div>
-      </div>
+      )}
     </div>
   );
 }
