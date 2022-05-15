@@ -3,3 +3,15 @@
   display: grid;
   grid-template-columns: 25% 75%;
 }
+
+.BodiesS {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0% 100%;
+  transition: grid-template-columns 6s, height 0.5s;
+}

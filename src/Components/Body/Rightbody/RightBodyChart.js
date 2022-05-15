@@ -10,6 +10,8 @@ function RightBodyChart({
   chartype,
   chartchange,
   openholding,
+  fullscreen,
+  zoom,
 }) {
   let arrr = [];
   let closingprice = [];
@@ -100,7 +102,7 @@ function RightBodyChart({
   };
   console.log(arrr);
   return (
-    <div className="rightbodychart">
+    <div className={"rightbodychart"}>
       {fetcherr != "" && <p>{fetcherr}</p>}
       {stocksymbol.length > 0 ? (
         <div className="row">
@@ -115,7 +117,9 @@ function RightBodyChart({
                 series={(chartchange ? linestates : states).series}
                 type={chartype}
                 className="chartDatass"
-                height={openholding ? 160 : 355}
+                // height={zoom ? 450 : openholding ? 160 : 355}
+                height={zoom ? 450 : 355}
+
                 // from 355
                 // 160
               />

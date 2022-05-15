@@ -35,3 +35,6 @@ code {
   background: #0284c7;
   border-radius: 10px;
 }
+.apexcharts-toolbar {
+  z-index: 0;
+}

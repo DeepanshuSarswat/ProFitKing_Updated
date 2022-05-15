@@ -31,8 +31,9 @@
   font-weight: 600;
 }
 .nifty-price-live {
-  font-size: 18px;
+  font-size: 14px;
   text-align: left;
+  font-weight: 600;
 }
 .nifty-price {
   display: flex;
@@ -43,6 +44,7 @@
 .rate {
   font-size: 12px;
   margin-left: auto;
+  letter-spacing: 1px;
 }
 .Header_right {
   display: flex;
@@ -87,6 +89,35 @@
   /* align-content: center;
   justify-content: center; */
   grid-template-columns: 20% 80%;
+}
+.open-user {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  position: absolute;
+  top: 10vh;
+  right: 5px;
+  height: 20vh;
+  z-index: 100;
+  width: 20%;
+  background-color: white;
+}
+.open-user-open-one,
+.open-user-open-second {
+  display: flex;
+  align-items: center;
+  color: #1e293b;
+  justify-content: space-between;
+  padding: 14px;
+  transition-duration: 220ms;
+  cursor: pointer;
+}
+.open-user-open-second:hover {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+.open-user-open-one:hover {
+  background-color: #e0f2fe;
+  color: #0369a1;
 }
 .funds-left {
   background-color: white;
@@ -176,6 +207,9 @@
   font-size: 1.5rem;
   padding: 18px;
   font-weight: 600;
+}
+.userIcon {
+  color: white;
 }
 .funss-datas-z {
   z-index: -1;

@@ -12,20 +12,23 @@ function Loginpage() {
             <CurrencyRupeeIcon className="pkicon" />
           </p>
           <p className="lrn">
-            <a href="https://zerodha.com/varsity/"> Learn</a>
+            <a target={"_blank"} href="https://zerodha.com/varsity/">
+              {" "}
+              Learn
+            </a>
           </p>
         </div>
         <div className="Login-h-r">
           <div className="creat-acc">
             <button className="creat-acc-btn">
-              <Link to="/CreateAccount" className="creat-acc-btn-link">
+              <Link to="/Home/CreateAccount" className="creat-acc-btn-link">
                 Create Account
               </Link>
             </button>
           </div>
           <div className="signin">
             <button className="singn-btn">
-              <Link to="/Sign" target={"_blank"}>
+              <Link to="/Home/Sign" target={"_blank"}>
                 Sign In
               </Link>
             </button>
@@ -44,7 +47,7 @@ function Loginpage() {
           </p>
           <p className="strt-investt">
             <button className="strt-investt-btn">
-              <Link to="/CreateAccount">Start Investing</Link>
+              <Link to="/Home/CreateAccount">Start Investing</Link>
             </button>
           </p>
         </div>

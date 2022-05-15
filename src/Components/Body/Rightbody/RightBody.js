@@ -16,7 +16,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import SymbolDetail from "./SymbolDetail";
 import Overview from "./Overview";
 import Rightbodyfooter from "./Rightbodyfooter";
-
+import ZoomInMapIcon from "@mui/icons-material/ZoomInMap";
+import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
 const useStyle = makeStyles({
   formconrtrol: {
     height: 40,
@@ -26,7 +27,7 @@ const useStyle = makeStyles({
     color: "rgb(35, 127, 206)",
   },
 });
-function RightBody() {
+function RightBody({ zoom, setzoom }) {
   function gtData() {
     let List = localStorage.getItem("StockLists");
 
@@ -70,6 +71,7 @@ function RightBody() {
   const [clickonSell, setclickonsell] = useState(false);
   const [openholding, setopenholding] = useState(false);
   const [fullscreen, setfullscreen] = useState(false);
+
   const timeframeChange = (event) => {
     settimeframe(event.target.value);
   };
@@ -140,6 +142,13 @@ function RightBody() {
       setsymbolDetails(true);
     }
   };
+  const handlezoom = () => {
+    if (zoom == false) {
+      setzoom(true);
+    } else {
+      setzoom(false);
+    }
+  };
   return (
     <div className="rightbodycontent">
       <div className="Rightbody">
@@ -168,13 +177,8 @@ function RightBody() {
               </IconButton>
             </div>
             <div className="rightheaderlefticon">
-              <IconButton>
-                <AddIcon />
-              </IconButton>
-            </div>
-            <div className="rightheaderlefticon">
-              <IconButton>
-                <CommentIcon />
+              <IconButton onClick={handlezoom}>
+                {zoom ? <ZoomInMapIcon /> : <ZoomOutMapIcon />}
               </IconButton>
             </div>
           </div>
@@ -293,6 +297,8 @@ function RightBody() {
             chartchange={chartchange}
             chartype={chartype}
             openholding={openholding}
+            fullscreen={fullscreen}
+            zoom={zoom}
           />
           {openoverview && (
             <div className="buy-sell-overview">

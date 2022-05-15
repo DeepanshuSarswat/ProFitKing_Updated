@@ -3,12 +3,19 @@ import Button from "@mui/material/Button";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import "./Header.css";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import Chart from "react-apexcharts";
 import { useState } from "react";
+import { IconButton } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+
 function Header() {
+  const usenevigate = useNavigate();
   const [openfunds, setopenfunds] = useState(false);
+  const [openuser, setopenuser] = useState(false);
   const state = {
     series: [45, 55],
     options: {
@@ -44,6 +51,14 @@ function Header() {
   const closefunds = () => {
     setopenfunds(false);
   };
+
+  const openuserhandle = () => {
+    if (openuser == false) {
+      setopenuser(true);
+    } else {
+      setopenuser(false);
+    }
+  };
   return (
     <div className="Header">
       <div className="Header_left">
@@ -53,7 +68,7 @@ function Header() {
             <p>NSE INDEX</p>
           </div>
           <div className="nifty-price">
-            <p className="nifty-price-live">+1.05</p>
+            <p className="nifty-price-live">+1.05 %</p>
             <p className="rate">17,000</p>
           </div>
         </div>
@@ -63,7 +78,7 @@ function Header() {
             <p>BSE INDEX</p>
           </div>
           <div className="nifty-price">
-            <p className="nifty-price-live">+1.05</p>
+            <p className="nifty-price-live">+1.05 %</p>
             <p className="rate">56,000</p>
           </div>
         </div>
@@ -98,8 +113,33 @@ function Header() {
               </Button>
             </Link>
           </div>
+          <div className="btn-header">
+            <IconButton onClick={openuserhandle}>
+              <AccountCircleIcon className="userIcon" />
+            </IconButton>
+          </div>
         </div>
       </div>
+      {openuser && (
+        <div className="open-user">
+          <div
+            className="open-user-open-one"
+            onClick={() => usenevigate("/Myaccount")}
+          >
+            <p>My Account</p>
+            <p>
+              <ManageAccountsIcon />
+            </p>
+          </div>
+          <div className="open-user-open-second">
+            <p>Logout</p>
+            <p>
+              <ExitToAppIcon />
+            </p>
+          </div>
+        </div>
+      )}
+
       {openfunds && (
         <div
           className={`${openfunds && "funds-datas"} ${
