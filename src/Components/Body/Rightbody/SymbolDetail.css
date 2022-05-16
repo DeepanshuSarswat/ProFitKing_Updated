@@ -1,0 +1,103 @@
+.symbolDetail {
+  margin-bottom: 3px;
+  margin-top: 3px;
+}
+.buy-sell {
+  padding-bottom: 4px;
+  border-bottom: 1px solid #d6d3d1;
+}
+.buy-stocks,
+.sell-stocks {
+  padding: 4px 10px;
+  transition-duration: 260ms;
+}
+.symbol-information,
+.orders,
+.portfolio {
+  transition-duration: 260ms;
+}
+.buy-stock,
+.sell-stock {
+  width: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.buy-stockk {
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px 10px;
+}
+.buy-stockk:hover {
+  background-color: #eff6ff;
+}
+
+.buy-stocks:hover {
+  background-color: #ecfccb;
+}
+.sell-stocks:hover {
+  background-color: #fee2e2;
+}
+
+.B {
+  background-color: #65a30d;
+  /* padding: 4px; */
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+  color: white;
+}
+.B-buy {
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #65a30d;
+  font-weight: 600;
+}
+.S {
+  background-color: #dc2626;
+  /* padding: 4px; */
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+  color: white;
+}
+.S-sell {
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc2626;
+  font-weight: 600;
+}
+.symbol-detail-info {
+  padding: 4px 0px;
+}
+.Icons-info {
+  height: 22px !important;
+  width: 22px !important;
+  color: #78716c;
+}
+.Icons-infos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40px;
+  color: #78716c;
+}

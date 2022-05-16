@@ -1,0 +1,87 @@
+.FundamentalData-header,
+.FundamentalData-overview,
+.Eps {
+  background-color: #f0f9ff;
+
+  color: #3f3f46;
+  padding: 16px;
+  border: 8px solid #e0f2fe;
+  border-radius: 4px;
+  margin: 16px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.company-sector {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
+.company-over-head,
+.Eps-header {
+  font-size: 1.3rem;
+  font-weight: 650;
+  text-decoration: underline;
+  margin-bottom: 16px;
+}
+.abt-company,
+.company-address {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  padding-bottom: 12px;
+}
+.company-address {
+  margin-bottom: 16px;
+  border-bottom: 6px solid #e0f2fe;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  padding-bottom: 12px;
+}
+
+.abt-span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: block;
+}
+.abts-span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: block;
+  margin: 18px 0px;
+}
+.fundamentalratios {
+  display: grid;
+  grid-template-columns: 45% 45%;
+
+  justify-content: space-between;
+  align-content: center;
+}
+.fundamentalratios1,
+.fundamentalratios2 {
+  background-color: white;
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.fundamentalratos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f9ff;
+  margin: 12px 0px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.FundamentalData {
+  padding-bottom: 16px;
+}

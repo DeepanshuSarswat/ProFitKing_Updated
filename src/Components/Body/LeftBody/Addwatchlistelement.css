@@ -1,0 +1,78 @@
+.Addwatchlistelement {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  height: 100vh;
+  /* z-index: 10002; */
+  width: 380px;
+}
+.Inputsearchs {
+  width: 380px;
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 4px;
+  height: 100vh;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  z-index: 250;
+}
+.InputSearch_Searchs {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.stockfilters {
+  font-size: 15px;
+  padding: 12px 19px;
+
+  transition-duration: 220ms;
+  text-overflow: ellipsis;
+  color: #1f2937;
+  padding-right: 0;
+  width: 80%;
+  cursor: pointer;
+}
+.Addstocklist:hover {
+  background-color: #e0f2fe;
+}
+.Addstocklist {
+  padding: 6px;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 19px;
+  transition-duration: 260ms;
+}
+.Addbtn {
+  margin-left: 12px;
+  width: 25%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 0 0 1px #65a30d;
+  font-size: 12px;
+  padding: 6px 6px;
+  font-weight: 600;
+  transition-duration: 260ms;
+  color: #65a30d;
+}
+.Add-icon {
+  width: 12px !important;
+  height: 12px !important;
+}
+.Addbtn:hover {
+  background-color: #e0f2fe;
+
+  box-shadow: inset 0 0 0 1px #4d7c0f;
+}

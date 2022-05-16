@@ -1,0 +1,39 @@
+.rightbodychart {
+  background-color: #eff6ff;
+  /* background-color: black; */
+  padding: 12px;
+  padding-bottom: 0;
+  z-index: 1;
+}
+.row {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.mixed-chart {
+  background-color: white;
+}
+.stockinfo {
+  padding: 4px 12px;
+}
+.companyname {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.exchange {
+  font-size: 10px;
+}
+.stockimg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  background-color: #eff6ff;
+}
+.stockimages {
+  display: block;
+  object-fit: contain;
+  height: 200px;
+  margin-top: 10%;
+}
