@@ -3,12 +3,19 @@
   /* background-color: black; */
   padding: 12px;
   padding-bottom: 0;
+<<<<<<< HEAD
   z-index: 1;
+=======
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 }
 .row {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 .mixed-chart {
   background-color: white;
 }

@@ -196,7 +196,11 @@ function Funamental() {
           <p className="funda-body-texts">
             Stock analysis and screening tool for investors in America.
           </p>
+<<<<<<< HEAD
         </div> */}
+=======
+        </div>  */}
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
       <div className="Gototop">
         <button
           onClick={GotoTop}

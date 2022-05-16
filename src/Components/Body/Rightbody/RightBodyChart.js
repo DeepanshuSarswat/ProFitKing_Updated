@@ -10,6 +10,11 @@ function RightBodyChart({
   chartype,
   chartchange,
   openholding,
+<<<<<<< HEAD
+=======
+  fullscreen,
+  zoom,
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 }) {
   let arrr = [];
   let closingprice = [];
@@ -100,7 +105,11 @@ function RightBodyChart({
   };
   console.log(arrr);
   return (
+<<<<<<< HEAD
     <div className="rightbodychart">
+=======
+    <div className={"rightbodychart"}>
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
       {fetcherr != "" && <p>{fetcherr}</p>}
       {stocksymbol.length > 0 ? (
         <div className="row">
@@ -115,7 +124,13 @@ function RightBodyChart({
                 series={(chartchange ? linestates : states).series}
                 type={chartype}
                 className="chartDatass"
+<<<<<<< HEAD
                 height={openholding ? 160 : 355}
+=======
+                // height={zoom ? 450 : openholding ? 160 : 355}
+                height={zoom ? 450 : 355}
+
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
                 // from 355
                 // 160
               />

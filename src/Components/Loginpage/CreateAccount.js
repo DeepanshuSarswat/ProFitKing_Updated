@@ -6,7 +6,11 @@
 
 // export default CreateAccount;
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+<<<<<<< HEAD
 import axios from "axios";
+=======
+
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 import React, { useState } from "react";
 import "./CreateAccount.css";
 import TextField from "@mui/material/TextField";
@@ -172,6 +176,7 @@ function getStepContent(step) {
   }
 }
 
+<<<<<<< HEAD
 function getCookie(name) {
   if (!document.cookie) {
       return null;
@@ -206,6 +211,8 @@ async function post_data(url,data){
     });
 }
 
+=======
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 const CreateAccount = () => {
   const classes = useStyles();
   const methods = useForm({
@@ -230,11 +237,19 @@ const CreateAccount = () => {
   };
 
   const handleNext = (data) => {
+<<<<<<< HEAD
+=======
+    console.log(data);
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
     if (activeStep == steps.length - 1) {
       fetch("https://jsonplaceholder.typicode.com/comments")
         .then((data) => data.json())
         .then((res) => {
+<<<<<<< HEAD
           post_data("http://127.0.0.1:8000/userregister",data)
+=======
+          console.log(res);
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
           setActiveStep(activeStep + 1);
         });
     } else {

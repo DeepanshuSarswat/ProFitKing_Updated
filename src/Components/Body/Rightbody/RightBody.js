@@ -16,7 +16,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import SymbolDetail from "./SymbolDetail";
 import Overview from "./Overview";
 import Rightbodyfooter from "./Rightbodyfooter";
+<<<<<<< HEAD
 
+=======
+import ZoomInMapIcon from "@mui/icons-material/ZoomInMap";
+import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 const useStyle = makeStyles({
   formconrtrol: {
     height: 40,
@@ -26,7 +31,11 @@ const useStyle = makeStyles({
     color: "rgb(35, 127, 206)",
   },
 });
+<<<<<<< HEAD
 function RightBody() {
+=======
+function RightBody({ zoom, setzoom }) {
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
   function gtData() {
     let List = localStorage.getItem("StockLists");
 
@@ -70,6 +79,10 @@ function RightBody() {
   const [clickonSell, setclickonsell] = useState(false);
   const [openholding, setopenholding] = useState(false);
   const [fullscreen, setfullscreen] = useState(false);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
   const timeframeChange = (event) => {
     settimeframe(event.target.value);
   };
@@ -140,6 +153,16 @@ function RightBody() {
       setsymbolDetails(true);
     }
   };
+<<<<<<< HEAD
+=======
+  const handlezoom = () => {
+    if (zoom == false) {
+      setzoom(true);
+    } else {
+      setzoom(false);
+    }
+  };
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
   return (
     <div className="rightbodycontent">
       <div className="Rightbody">
@@ -168,6 +191,7 @@ function RightBody() {
               </IconButton>
             </div>
             <div className="rightheaderlefticon">
+<<<<<<< HEAD
               <IconButton>
                 <AddIcon />
               </IconButton>
@@ -175,6 +199,10 @@ function RightBody() {
             <div className="rightheaderlefticon">
               <IconButton>
                 <CommentIcon />
+=======
+              <IconButton onClick={handlezoom}>
+                {zoom ? <ZoomInMapIcon /> : <ZoomOutMapIcon />}
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
               </IconButton>
             </div>
           </div>
@@ -293,6 +321,11 @@ function RightBody() {
             chartchange={chartchange}
             chartype={chartype}
             openholding={openholding}
+<<<<<<< HEAD
+=======
+            fullscreen={fullscreen}
+            zoom={zoom}
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
           />
           {openoverview && (
             <div className="buy-sell-overview">

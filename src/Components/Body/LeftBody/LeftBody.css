@@ -18,6 +18,11 @@
 .left-body-content {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
+=======
+  justify-content: space-between;
+  padding-right: 6px;
+>>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 }
 .watchlist {
   max-height: 250px;
