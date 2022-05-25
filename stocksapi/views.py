@@ -200,7 +200,6 @@ class updateuser(APIView):
                 if person.is_verified == 0:
                     # match timestamp code here
                     cur_time = datetime.now()
-                    print('cur_time',(cur_time))
                     pre_time = str(person.timestamp)
                     pre_time = pre_time.split('+')[0]
                     pre_time = datetime.strptime(pre_time, '%Y-%m-%d %H:%M:%S.%f')
