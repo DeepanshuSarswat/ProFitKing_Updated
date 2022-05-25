@@ -1,0 +1,1 @@
+web: gunicorn upstox.wsgi --log-file 
