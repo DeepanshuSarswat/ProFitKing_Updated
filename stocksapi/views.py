@@ -199,7 +199,7 @@ class updateuser(APIView):
             for person in me:
                 if person.is_verified == 0:
                     # match timestamp code here
-                    cur_time = datetime.datetime.now(timezone.utc)
+                    cur_time = datetime.now()
                     pre_time = person.timestamp
                     del_time = str(cur_time-pre_time)
                     del_time = del_time.split(':')
@@ -272,7 +272,8 @@ class register(APIView):
                 pass 
 
         status = send_mail(email_r, personalcode)
-        user=User1.objects.create_user(username = username,email=email_r, first_name=first_name,last_name=last_name,unicode=personalcode, timestamp=datetime.datetime.now(timezone.utc),phone_no =phone_r,pan_no = pan_no)
+
+        user=User1.objects.create_user(username = username,email=email_r, first_name=first_name,last_name=last_name,unicode=personalcode, timestamp=datetime.now(),phone_no =phone_r,pan_no = pan_no)
         user.save();
 
         return Response({'status':HTTP_200_OK,'message':'Success'})
