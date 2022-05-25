@@ -12,7 +12,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useLayoutEffect } from "react";
-import { defaultwatchName } from "../../features/stockSlice";
+import { defaultwatchName, NetProfitName } from "../../features/stockSlice";
 import { useDispatch } from "react-redux";
 function Header() {
  
@@ -178,6 +178,7 @@ function Header() {
 
  const LogoutApp = ()=>{
    logout_user()
+   dispatch(NetProfitName())
  }
 
  async function get_balances(){
@@ -197,6 +198,7 @@ else {
 
 useLayoutEffect(()=>{
   get_balances()
+  dispatch(NetProfitName(get_balances))
 },[])
 
 

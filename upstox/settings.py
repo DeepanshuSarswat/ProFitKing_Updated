@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from doctest import FAIL_FAST
 from pathlib import Path
 import os
 

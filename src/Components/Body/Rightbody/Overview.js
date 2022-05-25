@@ -9,7 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useSelector } from "react-redux";
-import { getorderersSelect, stockSelect } from "../../../features/stockSlice";
+import { getorderersSelect, NetprofitSelect, stockSelect } from "../../../features/stockSlice";
 import { useLayoutEffect } from "react";
 
 
@@ -35,6 +35,7 @@ function Overview({
   const [errormsg,seterrormsg] = React.useState("");
   let stock_Name = useSelector(stockSelect);
   let get_Stock_function = useSelector(getorderersSelect)
+  let final_blnc = useSelector(NetprofitSelect);
   
   let Bidsvalue = [];
   let Askvalue = [];
@@ -111,6 +112,7 @@ function Overview({
       let message = json["message"]
       console.log(message)
       if(message=='success'){
+        final_blnc()
         get_Stock_function()
         setsuccessorder(true)
         setTimeout(() => {
@@ -150,6 +152,7 @@ function Overview({
       let message = json["message"]
       console.log(message)
       if(message=='success'){
+        final_blnc()
         get_Stock_function()
         setsuccessorder(true)
         setTimeout(() => {
