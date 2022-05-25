@@ -1,1 +1,1 @@
-web: gunicorn upstox.wsgi --log-file 
+web: gunicorn upstox.wsgi
