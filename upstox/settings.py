@@ -133,7 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # STATIC_ROOT = os.path.join(BASE_DIR,'build/static')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'build/static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'build/images')
 CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 
