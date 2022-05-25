@@ -1,1 +1,1 @@
-web: gunicorn upstox.wsgi
+web: gunicorn upstox.wsgi:application
