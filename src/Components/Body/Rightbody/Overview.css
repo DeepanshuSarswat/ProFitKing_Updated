@@ -6,6 +6,9 @@
 }
 .Overview {
   padding-bottom: 4px;
+ 
+}
+.Overviews{
   position: relative;
 }
 .Heading-overview-close {
@@ -58,7 +61,7 @@
   justify-content: center;
 }
 .buy-bttn {
-  width: 30%;
+  width: 45%;
   background-color: #65a30d;
   text-align: center;
   padding: 4px;
@@ -71,7 +74,7 @@
   background-color: #84cc16;
 }
 .sel-btn {
-  width: 30%;
+  width: 45%;
   background-color: #dc2626;
   text-align: center;
   padding: 4px;
@@ -83,7 +86,7 @@
   background-color: #ef4444;
 }
 .market-status-overview {
-  height: 46vh;
+  height: 53vh;
 
   overflow: auto;
 }
@@ -126,7 +129,7 @@
 }
 .markt-depth {
   border: 1px solid #cbd5e1;
-  margin: 2px auto;
+  margin: 7px auto;
   width: 95%;
 }
 .markt-depth-body-left,
@@ -231,7 +234,8 @@
   padding: 12px;
   background-color: #65a30d;
   position: absolute;
-  bottom: -48px;
+ 
+margin-top: 20px;
   left: 0;
   display: flex;
   align-items: center;
@@ -239,12 +243,23 @@
   width: 100%;
   cursor: pointer;
   transition-duration: 260ms;
+  margin-top: auto;
+}
+.place-orders-buy:hover{
+ background-color: #4d7c0f;
+ font-weight: 650;
+}
+.place-orders-sell:hover{
+  font-weight: 650;
+  background-color: #ef4444;
 }
 .place-orders-sell {
+
   padding: 12px;
   background-color: #dc2626;
   position: absolute;
-  bottom: -48px;
+margin-top: 20px;
+ 
   left: 0;
   display: flex;
   align-items: center;
@@ -264,6 +279,42 @@
   align-items: center;
   justify-content: space-between;
 }
+.btm-order{
+  width: 80%;
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .deepanshu {
   color: pink;
+}
+button{
+  cursor: pointer;
+}
+.sucesorder{
+  margin-top: 25px;
+  padding: 12px 24px;
+  color:  white;
+  background-color: #4d7c0f;
+  font-weight: 650;
+  font-size: 14px;
+  border-radius: 8px;
+  margin: auto;
+  width: 80%;
+  margin-top: 100px;
+}
+.sucesorders{
+  margin-top: 25px;
+  padding: 12px 24px;
+  color:  white;
+  background-color: #dc2626;
+  font-weight: 650;
+  font-size: 14px;
+  border-radius: 8px;
+  margin: auto;
+  width: 80%;
+  margin-top: 100px;
 }

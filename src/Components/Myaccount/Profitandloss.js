@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import { useLayoutEffect } from "react";
 import "./Profitandloss.css";
 function Profitandloss() {
+const [profitlossData,setprofitlossData] = useState([]);
+  async function get_pandf(){
+    let response = await fetch('/getpandf')
+    if (response.ok) {
+      let json = await response.json();
+      let message = json['message'];
+      if (message == 'success'){
+
+        setprofitlossData(json['data'])}
+  }
+  else {
+      alert("HTTP-Error: " + response.status);
+  }
+
+  }
+useLayoutEffect(()=>{
+get_pandf()
+},[])
+
   const teblelabel = [
     "Scrip",
     "Buy Date",
@@ -36,7 +56,7 @@ function Profitandloss() {
           </thead>
           <tbody className="ponts">
             <tr>
-              <td>TATA MOTORS EQ</td>
+              {/* <td>TATA MOTORS EQ</td>
               <td>11/05/2022</td>
               <td>5</td>
               <td>
@@ -52,8 +72,33 @@ function Profitandloss() {
               <td>
                 ₹47.00
                 <br></br>(0.02%)
-              </td>
+              </td> */}
             </tr>
+            {
+              profitlossData?.map((e)=>{
+          
+               
+                let buy_time = e.buy_date?.split('T')[1].split('.')[0]+' '+'('+e.buy_date.split('T')[0]+')';
+              let sell_date = e.sell_date?.split('T')[1].split('.')[0]+' '+'('+e.sell_date.split('T')[0]+')';
+                return(
+                  <tr>
+                    <td>{e.symbol}</td>
+                    <td>{buy_time}</td>
+                    <td>{e.quantity}</td>
+                    <td>{e.price/e.quantity}</td>
+                    <td>{sell_date}</td>
+                    <td>{e.sell_quantity}</td>
+                    <td>{e.sell_price}</td>
+                    <td className={((parseFloat(e.sell_price)) - (parseFloat(e.price)/parseInt(e.quantity)))>0?"green":"red"}>₹ {((parseFloat(e.sell_price)) - (parseFloat(e.price)/parseInt(e.quantity)))}
+                    <br></br>
+                    {(((parseFloat(e.sell_price)-parseFloat((e.price)/(e.quantity)))/(parseFloat(e.price/e.quantity))))*(100)} %
+                     </td>
+                   
+
+                  </tr>
+                )
+              })
+            }
           </tbody>
         </table>
       </div>

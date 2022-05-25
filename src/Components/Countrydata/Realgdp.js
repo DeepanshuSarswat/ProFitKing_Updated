@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Chart from "react-apexcharts";
 import Gdppercapita from "./Gdppercapita";
+
 import "./Realgdp.css";
 function Realgdp() {
   function gtData() {
@@ -20,7 +21,7 @@ function Realgdp() {
     Datavalue.push(e.value);
     Datadate.push(e.date);
   });
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch(
       "https://www.alphavantage.co/query?function=REAL_GDP&interval=annual&apikey=demo"
     )
@@ -83,7 +84,7 @@ function Realgdp() {
           options={state.options}
           series={state.series}
           type="bar"
-          width="1050"
+          width="1250"
           height="300"
         />
       </div>

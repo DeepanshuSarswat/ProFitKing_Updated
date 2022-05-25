@@ -8,6 +8,11 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
+import { getorderersSelect, stockSelect } from "../../../features/stockSlice";
+import { useLayoutEffect } from "react";
+
+
 function Overview({
   setopenoverview,
   stockinnfo,
@@ -20,6 +25,154 @@ function Overview({
   setclickonsell,
 }) {
   const [age, setAge] = React.useState("");
+  const [stockoverview,setstockoverview] = React.useState([]);
+  const [companyoverview,setcompanyoverview] = React.useState([]);
+  const [ordersType,setorderType] = React.useState("");
+  const [productType,setproductType] = React.useState("");
+  const [Quantity,setQuantity] = React.useState(0);
+  const [successorder,setsuccessorder] = React.useState(false);
+  const [moneyError,setmoneyError] = React.useState(false);
+  const [errormsg,seterrormsg] = React.useState("");
+  let stock_Name = useSelector(stockSelect);
+  let get_Stock_function = useSelector(getorderersSelect)
+  
+  let Bidsvalue = [];
+  let Askvalue = [];
+
+
+ 
+
+
+  const getCookie =(name) =>{
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+  const csrftoken = getCookie('X-CSRFToken');
+
+  async function get_share_details(){
+    let response = await fetch('/get_share_details', {
+      credentials: 'include',
+      method: 'POST',
+      mode: 'same-origin',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+      },
+      body: JSON.stringify({
+          'symbol':stock_Name 
+      })
+  })
+  if (response.ok) {
+      let json = await response.json();
+      let message = json["message"]
+      if(message=='success'){
+      console.log(json['share_data'])
+      setcompanyoverview(json['share_data']);
+      }
+  }
+  else {
+      alert("HTTP-Error: " + response.status);
+  }
+  }
+
+
+  async function buy_stock(){
+    let response = await fetch('/buy_stock', {
+      credentials: 'include',
+      method: 'POST',
+      mode: 'same-origin',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+      },
+      body: JSON.stringify({
+          'order_type': ordersType,
+          'product_type':productType,
+          'symbol':companyoverview.symbol,
+          'quantity':Quantity,
+          'buy_price':companyoverview.cmp,
+      })
+  })
+  if (response.ok) {
+      let json = await response.json();
+      let message = json["message"]
+      console.log(message)
+      if(message=='success'){
+        get_Stock_function()
+        setsuccessorder(true)
+        setTimeout(() => {
+          setsuccessorder(false)
+        }, 4000);
+      }
+      else{
+        seterrormsg(message);
+      }
+  }
+  else {
+      alert("HTTP-Error: " + response.status);
+  }
+  }
+
+
+  async function sell_stock(){
+    let response = await fetch('/sell_stock', {
+      credentials: 'include',
+      method: 'POST',
+      mode: 'same-origin',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+      },
+      body: JSON.stringify({
+          'order_type': ordersType,
+          'product_type':productType,
+          'symbol':companyoverview.symbol,
+          'quantity':Quantity,
+          'buy_price':companyoverview.cmp,
+      })
+  })
+  if (response.ok) {
+      let json = await response.json();
+      let message = json["message"]
+      console.log(message)
+      if(message=='success'){
+        get_Stock_function()
+        setsuccessorder(true)
+        setTimeout(() => {
+          setsuccessorder(false)
+        }, 4000);
+      }
+      else{
+        seterrormsg(message);
+        setmoneyError(true);
+        setTimeout(() => {
+          setmoneyError(false)
+        }, 4000);
+      }
+  }
+  else {
+      alert("HTTP-Error: " + response.status);
+  }
+  }
+
+
+  useLayoutEffect(()=>{
+    get_share_details()
+  },[stock_Name])
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -51,6 +204,34 @@ function Overview({
       setclickonBuy(true);
     }
   };
+useLayoutEffect(()=>{
+  fetch(`https://api.twelvedata.com/time_series?apikey=e9372b1dc5544638a93c0311a3a681ae&interval=1day&symbol=${stock_Name}&outputsize=1`)
+  .then((response)=> response.json())
+  .then((data)=> setstockoverview(...data["values"]))
+},[stock_Name])
+console.log(stockoverview);
+const quntity = 10;
+const price = stockoverview?.close;
+for(let i =0;i<5;i++){
+let   quntities = quntity + (50+i);
+   let prices  = price - i;
+  Bidsvalue.push({prices,quntities})
+  let   quntitiess = quntity + (80+i);
+   let pricess  = price + i;
+   
+   Askvalue.push({pricess,quntitiess})
+}
+console.log(ordersType,productType);
+const submitOrder = (e)=>{
+  e.preventDefault();
+  if(clickonBuy===true){
+    buy_stock();
+  }
+  else{
+    sell_stock();
+  }
+}
+console.log(get_Stock_function);
   return (
     <div className="Overviews">
       {stockinnfo && (
@@ -59,16 +240,16 @@ function Overview({
             <p className="Heading-overview-close" onClick={closethetab}>
               <CloseIcon className="overview-close-icon" />
             </p>
-            <p className="companyname">HCL TECHNOLOGIES LTD</p>
+            <p className="companyname">{companyoverview.company_name}</p>
           </div>
           <div className="basic-overview">
             <div className="basic-overview-left">
-              <p className="company-symbol">HCLTECH</p>
-              <p className="nse-eq">NSE EQ</p>
+              <p className="company-symbol">{companyoverview.symbol}</p>
+              <p className="nse-eq">{companyoverview.exchange}</p>
             </div>
             <div className="basic-overview-right">
-              <p className="current-price">1079</p>
-              <p className="chnage-in-price">-13.25(1.21%)</p>
+              <p className="current-price">{companyoverview.cmp}</p>
+              <p className="chnage-in-price">{companyoverview.stock_diff} ({companyoverview.percent})</p>
             </div>
           </div>
           <div className="market-status">
@@ -78,9 +259,9 @@ function Overview({
             <div className="sel-btn" onClick={sellShares}>
               Sell
             </div>
-            <div className="makefavorite">
+            {/* <div className="makefavorite">
               <FavoriteBorderIcon />
-            </div>
+            </div> */}
           </div>
           <div className="market-status-overview">
             <div className="markt-stats">
@@ -89,29 +270,29 @@ function Overview({
                 <div className="markt-stats-body-left">
                   <div className="open-div">
                     <p className="open">Open</p>
-                    <p className="open-price">1094.00</p>
+                    <p className="open-price">{stockoverview.open}</p>
                   </div>
                   <div className="upper-circut-div">
-                    <p className="Upper-Circuit">Upper Circuit</p>
-                    <p className="Upper-circut-price">1187.15</p>
+                    <p className="Upper-Circuit">High</p>
+                    <p className="Upper-circut-price">{stockoverview.high}</p>
                   </div>
                   <div className="volume-div">
                     <p className="volume">Volume</p>
-                    <p className="volume-number">29,88,180</p>
+                    <p className="volume-number">{stockoverview.volume}</p>
                   </div>
                 </div>
                 <div className="markt-stats-body-right">
                   <div className="close-div">
                     <p className="close">Close</p>
-                    <p className="close-price">1094.00</p>
+                    <p className="close-price">{stockoverview.close}</p>
                   </div>
                   <div className="lower-circut-div">
-                    <p className="lower-Circuit">Lower Circuit</p>
-                    <p className="lower-circut-price">1187.15</p>
+                    <p className="lower-Circuit">Low</p>
+                    <p className="lower-circut-price">{stockoverview.low}</p>
                   </div>
                   <div className="atp-div">
-                    <p className="atp">Avg. Traded Prc.</p>
-                    <p className="volume-number">29,88,180</p>
+                    <p className="atp">Date Time</p>
+                    <p className="volume-number">{stockoverview.datetime}</p>
                   </div>
                 </div>
                 {/* <div className="footer">52w high</div> */}
@@ -127,26 +308,18 @@ function Overview({
                     <p className="qty">Quantity</p>
                   </div>
                   <div className="depth-body-datas">
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
-                    </div>{" "}
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
-                    </div>{" "}
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
-                    </div>{" "}
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
-                    </div>{" "}
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
+                  {
+                    Bidsvalue?.map(e=>{
+                     return (
+                      <div className="depth-body-data">
+                      <p className="price">{e.prices}</p>
+                      <p className="qntyty">{e.quntities}</p>
                     </div>
+                     )
+                    })
+                  }
+                    
+                 
                   </div>
                 </div>
                 <div className="markt-depth-body-right">
@@ -155,26 +328,18 @@ function Overview({
                     <p className="qty">Quantity</p>
                   </div>
                   <div className="depth-body-datas">
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
-                    </div>{" "}
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
-                    </div>{" "}
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
-                    </div>{" "}
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
-                    </div>{" "}
-                    <div className="depth-body-data">
-                      <p className="price">0</p>
-                      <p className="qntyty">0</p>
+                  {
+                    Askvalue?.map(e=>{
+                      return(
+                        <div className="depth-body-data">
+                      <p className="price">{e.pricess}</p>
+                      <p className="qntyty">{e.quntitiess}</p>
                     </div>
+                      )
+                    })
+                  }
+                 
+                   
                   </div>
                 </div>
               </div>
@@ -188,16 +353,16 @@ function Overview({
             <p className="Heading-overview-close" onClick={closethetab}>
               <CloseIcon className="overview-close-icon" />
             </p>
-            <p className="companyname">HCL TECHNOLOGIES LTD</p>
+            <p className="companyname">{companyoverview.company_name}</p>
           </div>
           <div className="basic-overview">
             <div className="basic-overview-left">
-              <p className="company-symbol">HCLTECH</p>
-              <p className="nse-eq">NSE EQ</p>
+              <p className="company-symbol">{companyoverview.symbol}</p>
+              <p className="nse-eq">{companyoverview.exchange}</p>
             </div>
             <div className="basic-overview-right">
-              <p className="current-price">1079</p>
-              <p className="chnage-in-price">-13.25(1.21%)</p>
+              <p className="current-price">{companyoverview.cmp}</p>
+              <p className="chnage-in-price">{companyoverview.stock_diff} ({companyoverview.percent})</p>
             </div>
           </div>
           <div className="buyorsell">
@@ -214,14 +379,17 @@ function Overview({
               Sell
             </div>
           </div>
+          <form>
           <div className="takesomeinputs">
             <TextField
               id="outlined-basic"
-              label="Quantity*"
-              // defaultValue="Small"
+              label="Quantity"
+          value ={Quantity}
               type="number"
               size="small"
               fullWidth
+              required
+              onChange={(e)=>setQuantity(e.target.value)}
             />
             <div>
               <div className="takesomeinput">
@@ -230,16 +398,13 @@ function Overview({
                   <Select
                     labelId="demo-select-small"
                     id="demo-select-small"
-                    value={age}
+                    value={productType}
+                    required
                     label="Product"
-                    onChange={handleChange}
+                    onChange={(e)=> setproductType(e.target.value)}
                   >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    <MenuItem value={"Delivery"}>Delivery</MenuItem>
+                    
                   </Select>
                 </FormControl>
               </div>
@@ -247,43 +412,72 @@ function Overview({
                 <FormControl sx={{ minWidth: 120 }} size="small" fullWidth>
                   <InputLabel id="demo-select-small">Order Type</InputLabel>
                   <Select
+                  required
                     labelId="demo-select-small"
                     id="demo-select-small"
-                    value={age}
+                    value={ordersType}
                     label="Order Type"
-                    onChange={handleChange}
+                    onChange={(e)=> setorderType(e.target.value)}
                   >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                  
+                    <MenuItem value={"Market"}>Market</MenuItem>
+                    
                   </Select>
                 </FormControl>
               </div>
-              <TextField
-                id="outlined-basic"
-                label="Price*"
-                // defaultValue="Small"
-                type="number"
-                size="small"
-                fullWidth
-              />
+              
             </div>
             <div
               className={clickonBuy ? "place-orders-buy" : "place-orders-sell"}
             >
-              <div className="place-ordr">
+             <button className="btm-order" type="submit" onClick={submitOrder}>
+             <div className="place-ordr">
                 <p>
                   <ShoppingCartIcon />
                 </p>
-                <p>Place Sell Order</p>
+                <p>Place {clickonBuy?"Buy":"Sell"} Order</p>
               </div>
+             </button>
             </div>
           </div>
+          </form>
+
+          
         </div>
+
+        
       )}
+      {
+  successorder &&
+  <div
+             className="sucesorder"
+            >
+            
+             
+               
+                <p>Your {clickonBuy?"Buy":"Sell"} Order has been Placed successfully.
+                Please Check Order Sections
+                </p>
+            
+             
+            </div>
+}
+
+{
+  moneyError  &&
+  <div
+             className="sucesorders"
+            >
+            
+             
+               
+                <p>
+                {errormsg}
+                </p>
+            
+             
+            </div>
+}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 .Sig-n {
   height: 100vh;
 }
-.Sign-in-user {
+.Sign-in-user,.cred {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, #3c404326 0px 1px 3px 1px;
   width: 40%;
   margin: auto;
@@ -53,6 +53,20 @@
   font-weight: 600;
   margin-bottom: 8px;
 }
+.Enter-digits {
+  color: #111827;
+
+ 
+  font-weight: 600;
+  margin: 12px 0px;
+}
+.cred-text, .cred-link{
+  color: #111827;
+text-align: center;
+  padding-left: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
 .input-six {
   padding-left: 12px;
   margin-bottom: 35px;
@@ -60,9 +74,10 @@
 .Continue-btn {
   padding-left: 12px;
 }
-<<<<<<< HEAD
-=======
 .forgot-pins:hover {
   color: white;
 }
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+.link-to-login{
+  display: block;
+  padding-left: 12px;
+}

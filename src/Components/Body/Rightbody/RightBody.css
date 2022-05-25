@@ -1,6 +1,7 @@
 .Rightbody,
 .rightheader {
   position: relative;
+ 
 }
 .rightheader {
   z-index: 1;
@@ -36,6 +37,7 @@
 .rightbodycontent {
   background-color: #eff6ff;
   position: relative;
+
 }
 .rightbodycontents {
   display: grid;

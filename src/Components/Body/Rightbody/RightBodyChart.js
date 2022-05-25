@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import Chart from "react-apexcharts";
 import { useEffect, useState } from "react";
 import "./RightBodyChar.css";
@@ -10,11 +10,11 @@ function RightBodyChart({
   chartype,
   chartchange,
   openholding,
-<<<<<<< HEAD
-=======
   fullscreen,
   zoom,
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+  stock_Name,
+  exchange_Name,
+  company_Name
 }) {
   let arrr = [];
   let closingprice = [];
@@ -50,14 +50,16 @@ function RightBodyChart({
     },
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch(
-      `https://api.twelvedata.com/time_series?apikey=cc142ccd11b0460985ac8e6daff8f278&interval=${timeframe}&symbol=${stocksymbol}&outputsize=400`
+      `https://api.twelvedata.com/time_series?apikey=cc142ccd11b0460985ac8e6daff8f278&interval=${timeframe}&symbol=${stock_Name}&outputsize=400`
     )
       .then((response) => response.json())
-      .then((data) => setchartData(data))
-      .catch((err) => setfetcherr(err.message));
-  }, [stocksymbol, timeframe]);
+      .then((data) => {setchartData(data)
+     
+      })
+      .catch((err) => setfetcherr(err.message,"Please Check Your Internet Connection"));
+  }, [stocksymbol,timeframe,stock_Name]);
   let newData = chartData.values;
   function candelData() {
     for (let i = 0; i < newData?.length; i++) {
@@ -103,34 +105,28 @@ function RightBodyChart({
       },
     },
   };
-  console.log(arrr);
+ 
   return (
-<<<<<<< HEAD
-    <div className="rightbodychart">
-=======
     <div className={"rightbodychart"}>
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
       {fetcherr != "" && <p>{fetcherr}</p>}
-      {stocksymbol.length > 0 ? (
+      {stock_Name.length > 0 ? (
         <div className="row">
-          {stocksymbol.length > 0 && (
+          {stock_Name.length > 0 && (
             <div className="mixed-chart">
               <div className="stockinfo">
-                <p className="companyname">{companyname}</p>
-                <p className="exchange">{exchange}</p>
+                <p className="companyname">{company_Name}</p>
+                <p className="exchange">{exchange_Name}</p>
               </div>
               <Chart
                 options={(chartchange ? linestates : states).options}
                 series={(chartchange ? linestates : states).series}
                 type={chartype}
                 className="chartDatass"
-<<<<<<< HEAD
-                height={openholding ? 160 : 355}
-=======
                 // height={zoom ? 450 : openholding ? 160 : 355}
-                height={zoom ? 450 : 355}
+                height={zoom ? "560vh" : "480vh"}
+                
+              
 
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
                 // from 355
                 // 160
               />

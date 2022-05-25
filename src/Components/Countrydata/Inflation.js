@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Chart from "react-apexcharts";
-import ReatilSales from "./ReatilSales";
+
 function Inflation() {
   function gtData() {
     let List = localStorage.getItem("inflation");
@@ -43,7 +43,7 @@ function Inflation() {
       curve: "smooth",
     },
   };
-
+console.log(outputvalue)
   return (
     <div>
       <div className="realgdp">
@@ -72,13 +72,13 @@ function Inflation() {
           type="line"
           series={Series}
           options={Option}
-          width="1050"
+          width="1250"
           height="300"
           className="charts-gdp"
         />
         Inflation
       </div>
-      <ReatilSales />
+      
     </div>
   );
 }

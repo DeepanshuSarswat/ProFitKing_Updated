@@ -43,3 +43,7 @@
 .ponts > tr > td {
   text-align: left;
 }
+.currentamount{
+  border-bottom: 0px;
+  margin-top: 3px;
+}

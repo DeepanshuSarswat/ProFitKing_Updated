@@ -4,11 +4,17 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import axios from "axios";
+
+
 function Addwatchlistelement({
   opensearch,
   setopensearch,
   watchlistData,
   newWatchlisthdr,
+  watchlisthdr,
+  get_watch_list,
+  setwatchlstelement
 }) {
   const [threeword, setthreeeword] = useState(true);
   const [datas, setdatas] = useState(gtData());
@@ -48,15 +54,56 @@ function Addwatchlistelement({
       setnotfound(false);
     }
   };
-  const Addstocktowatchlist = (e) => {
-    if (e in watchlistData[newWatchlisthdr]) {
-      console.log("Don't do this");
-    } else {
-      watchlistData[newWatchlisthdr].push(e);
-      console.log(watchlistData[newWatchlisthdr]);
-      localStorage.setItem("Watchlistitms", JSON.stringify(watchlistData));
+  const getCookie =(name) =>{
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
     }
-  };
+    return cookieValue;
+}
+
+  const csrftoken = getCookie('X-CSRFToken');
+
+  async function add_share(s,wt){
+    let response = await fetch('/addwatchlist', {
+      credentials: 'include',
+      method: 'POST',
+      mode: 'same-origin',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+      },
+      body: JSON.stringify({
+        'symbol':s,
+        'Watchlist':wt
+      })
+  })
+  if (response.ok) {
+      let json = await response.json();
+      let message = await json["message"]
+     
+      if(message=='success'){
+        setwatchlstelement(json['data'])
+        get_watch_list()
+      }
+      
+  }
+  else {
+      alert("HTTP-Error: " + response.status);
+  }
+  }
+  const Addstocktowatchlist=(e)=>{
+    add_share(e.symbol,watchlisthdr)
+  }
+  
   return (
     <div className="Addwatchlistelement">
       {opensearch && (
@@ -103,12 +150,13 @@ function Addwatchlistelement({
               </>
             )}
             {filterData?.slice(0, 15).map((e, key) => {
+             
               return (
                 <div className="Addstocklist">
                   <p
                     className="stockfilters"
                     key={key}
-                    //   onClick={() => clickonstock(e.name)}
+                   
                   >
                     {e.name.toUpperCase()}
                   </p>

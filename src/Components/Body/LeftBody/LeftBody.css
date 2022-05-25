@@ -2,31 +2,27 @@
   overflow: auto;
   overflow-x: hidden;
   /* position: relative; */
-  background-color: #0a66c2;
+  background-color: #1976d2
 }
 .Leftbodyheader {
   z-index: 200;
   position: sticky;
   padding: 4px 0px 4px 8px;
-
+padding: 8px 16px;
   top: 0;
   background-color: white;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   max-height: 300px;
 }
 .left-body-content {
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-=======
   justify-content: space-between;
   padding-right: 6px;
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 }
 .watchlist {
   max-height: 250px;
-
+ padding-top: 22px;
   overflow: auto;
 }
 .watchlistinput {
@@ -177,6 +173,7 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+
   transition-duration: 250ms;
 }
 .wish-lst-bottom {
@@ -191,8 +188,37 @@
   left: 20px;
 }
 .LeftBody {
-  background-color: #0a66c2;
+  background-color: white;
+  padding: 8px 16px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  margin: 12px 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
 #Activeclass {
   box-shadow: inset 0 0 0 1px #0a66c2;
+}
+.lst-header{
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.lst-body{
+  font-size: 12px;
+  color: #64748b
+  ;
+  cursor: pointer;
+}
+.lst-headergreen{
+  font-size: 16px;
+  font-weight: 600;
+  color: #16a34a;
+}
+.lst-headerred{
+  font-size: 16px;
+  font-weight: 600;
+  color:#dc2626;
 }

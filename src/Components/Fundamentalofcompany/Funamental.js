@@ -57,7 +57,7 @@ function Funamental() {
         localStorage.setItem("clickedstocks", JSON.stringify(e));
 
         setstocksymbol(e.symbol);
-
+        BalancesheetData();
         setfilterData([]);
         setthreeeword(false);
         gttData(e.symbol);
@@ -77,12 +77,13 @@ function Funamental() {
       .then((respponse) => respponse.json())
       .then((data) => {
         console.log(data);
+
         localStorage.setItem("overviewData", JSON.stringify(data));
       });
   }
   function epsData(e) {
     fetch(
-      `https://www.alphavantage.co/query?function=EARNINGS&symbol=${e}&apikey=2KWEIOOBNB82EHKZ`
+      `https://www.alphavantage.co/query?function=EARNINGS&symbol=${e}&apikey=55RB6VW5QMERT6HW`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -92,7 +93,7 @@ function Funamental() {
   }
   function totalRevenue(e) {
     fetch(
-      `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${e}&apikey=2KWEIOOBNB82EHKZ`
+      `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${e}&apikey=2A6AAA2W48C4FBJM`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -102,7 +103,7 @@ function Funamental() {
   }
   function BalancesheetData(e) {
     fetch(
-      `https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=${e}&apikey=2KWEIOOBNB82EHKZ`
+      `https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=${e}&apikey=H425ECFTGFPLCQ4K`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -196,11 +197,7 @@ function Funamental() {
           <p className="funda-body-texts">
             Stock analysis and screening tool for investors in America.
           </p>
-<<<<<<< HEAD
-        </div> */}
-=======
         </div>  */}
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
       <div className="Gototop">
         <button
           onClick={GotoTop}

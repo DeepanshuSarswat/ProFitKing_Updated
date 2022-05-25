@@ -1,24 +1,57 @@
-<<<<<<< HEAD
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import "./Sign.css";
-
-function Sign() {
-=======
-import React, { useState } from "react";
-import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-
+import axios from "axios";
+import { useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Sign.css";
 
 function Sign() {
   const [username, setusername] = useState("");
   const [userpassword, setuserpassword] = useState("");
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+
+
+  async function check_if_user_login(){
+    let response = await fetch('/check_userlogin')
+    if (response.ok) {
+      let json = await response.json();
+      let message = json['message'];
+      if (message == 'yes'){
+        window.location.replace('/Home')
+      }  
+  }
+  else {
+      alert("HTTP-Error: " + response.status);
+  }
+
+  }
+
+  useLayoutEffect(()=>{
+    check_if_user_login();
+  },[])
+
+
+  const submit_data = ()=>{
+      const get_username = username;
+      const get_pass = userpassword;
+      axios.post('/userlogin', {
+        'username':username,
+        'password':userpassword
+    })
+    .then(res => {
+        let msg =res['data']['message']
+        console.log(msg)
+        if(msg=='success'){
+          window.location.replace('/Home')
+        }
+
+    })
+    .catch(err =>{
+        alert(err);
+    });
+  }
+
   return (
     <div className="Sig-n">
       <div className="Login-h-l Sign-h-l">
@@ -28,12 +61,6 @@ function Sign() {
         </p>
       </div>
       <div className="Sign-in-user">
-<<<<<<< HEAD
-        <p className="forgot-pin">Forgot PIN?</p>
-        <p className="Hii">Hi Deepanshu</p>
-        <p className="welcome">Welcome back</p>
-        <p className="Enter-digit">Enter 6-digit PIN</p>
-=======
         <p className="forgot-pin">
           <Link to="Forgotpassword" className="forgot-pins">
             Forgot Password?
@@ -42,15 +69,11 @@ function Sign() {
         <p className="Hii">Hi Deepanshu</p>
         <p className="welcome">Welcome back</p>
         <p className="Enter-digit">Enter Your User Name</p>
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
         <p className="input-six">
           <TextField
             id="standard-basic"
             variant="standard"
             fullWidth
-<<<<<<< HEAD
-            type={"number"}
-=======
             type={"text"}
             onChange={(e) => setusername(e.target.value)}
           />
@@ -61,9 +84,11 @@ function Sign() {
             id="standard-basic"
             variant="standard"
             fullWidth
-            type={"text"}
+            type={"password"}
             onChange={(e) => setuserpassword(e.target.value)}
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+            inputProps={{
+    minLength: 8
+  }}
           />
         </p>
         <p className="Continue-btn">
@@ -74,11 +99,8 @@ function Sign() {
             variant="contained"
             size="large"
             fullWidth
-<<<<<<< HEAD
-            //   disabled={!imputvalue ? true : false}
-=======
             disabled={!username && !userpassword ? true : false}
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+            onClick = {submit_data}
           >
             Continue
           </Button>

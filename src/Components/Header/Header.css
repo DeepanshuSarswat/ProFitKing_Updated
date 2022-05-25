@@ -13,6 +13,7 @@
   grid-template-columns: 50% 50%;
   border: 1px solid #e5e5e5;
   border-top: 0;
+ 
 }
 .NIFTY,
 .sensex {
@@ -27,18 +28,33 @@
   border-right: 1px solid #e5e5e5;
 }
 .ni-fty {
-  color: #fafafa;
+  
   font-weight: 600;
-}
-.nifty-price-live {
-<<<<<<< HEAD
-  font-size: 18px;
+ 
+ 
+  font-size: 14px;
   text-align: left;
-=======
+}
+
+.nifty-price-live {
   font-size: 14px;
   text-align: left;
   font-weight: 600;
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+}
+.nifty-price-live-lst-headergreen{
+  font-size: 14px;
+  text-align: left;
+  font-weight: 600;
+  color:greenyellow;
+ 
+  
+}
+.nifty-price-live-lst-headerred{
+  color:#ff8b8b;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 600;
+ 
 }
 .nifty-price {
   display: flex;
@@ -49,10 +65,7 @@
 .rate {
   font-size: 12px;
   margin-left: auto;
-<<<<<<< HEAD
-=======
   letter-spacing: 1px;
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 }
 .Header_right {
   display: flex;
@@ -98,16 +111,14 @@
   justify-content: center; */
   grid-template-columns: 20% 80%;
 }
-<<<<<<< HEAD
-=======
 .open-user {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   position: absolute;
   top: 10vh;
   right: 5px;
-  height: 20vh;
-  z-index: 100;
+  height: 15vh;
+  z-index: 1000;
   width: 20%;
   background-color: white;
 }
@@ -129,7 +140,6 @@
   background-color: #e0f2fe;
   color: #0369a1;
 }
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 .funds-left {
   background-color: white;
 }
@@ -219,15 +229,13 @@
   padding: 18px;
   font-weight: 600;
 }
-<<<<<<< HEAD
-=======
 .userIcon {
   color: white;
 }
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 .funss-datas-z {
   z-index: -1;
 }
 .funds-datas {
   z-index: 100;
 }
+

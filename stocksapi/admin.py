@@ -41,3 +41,7 @@ class UserAdmin(BaseUserAdmin):
                 ]
             },
         ), ]
+admin.site.register(models.stocks)
+admin.site.register(models.WatchList)
+admin.site.register(models.Order)
+admin.site.register(models.holdings)

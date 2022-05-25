@@ -1,20 +1,22 @@
 .rightbody-btm-ftr {
   height: 40vh;
   background-color: white;
+  overflow: auto;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.notfullScreen{
+  height: 5vh;
+  background-color: white;
+  overflow: hidden;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 .fullScreen {
-<<<<<<< HEAD
-  height: 89vh;
-  background-color: white;
-  z-index: 1000;
-=======
   height: 65vh;
-  z-index: 10001;
+ 
   background-color: white;
-  z-index: 100001;
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+overflow: auto;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
@@ -43,6 +45,18 @@
   border-bottom: 2px solid #cbd5e1;
   transition-duration: 260ms;
   background-color: #eff6ff;
+}
+
+.ordersss {
+  padding: 6px 12px;
+  border-right: 2px solid #cbd5e1;
+  color: #0f172a;
+  font-weight: 650;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 2px solid #cbd5e1;
+  transition-duration: 260ms;
+  background-color: white;
 }
 .open-screen {
   padding: 6px 12px;
@@ -77,4 +91,27 @@
 .screencoll2:hover {
   background-color: white;
   border-radius: 50%;
+}
+
+.green{
+  color: green;
+  font-weight: 600;
+}
+.red{
+  color: red;
+  font-weight: 600;
+}
+.order-holding-position{
+  margin-top: -24px;
+}
+.emptywatchlsts {
+  height: 200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  /* background-color: #404040; */
+  width: 440%;
+  margin: auto;
 }

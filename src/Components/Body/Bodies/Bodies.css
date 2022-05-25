@@ -3,8 +3,6 @@
   display: grid;
   grid-template-columns: 25% 75%;
 }
-<<<<<<< HEAD
-=======
 
 .BodiesS {
   position: absolute;
@@ -17,4 +15,3 @@
   grid-template-columns: 0% 100%;
   transition: grid-template-columns 6s, height 0.5s;
 }
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c

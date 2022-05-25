@@ -16,12 +16,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import SymbolDetail from "./SymbolDetail";
 import Overview from "./Overview";
 import Rightbodyfooter from "./Rightbodyfooter";
-<<<<<<< HEAD
-
-=======
 import ZoomInMapIcon from "@mui/icons-material/ZoomInMap";
 import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+import { useSelector } from "react-redux";
+import { companyName, companySelect, exchangeName, exchangeSelect, stockSelect } from "../../../features/stockSlice";
+import { useDispatch } from "react-redux";
+import { stockName } from "../../../features/stockSlice";
 const useStyle = makeStyles({
   formconrtrol: {
     height: 40,
@@ -31,11 +31,12 @@ const useStyle = makeStyles({
     color: "rgb(35, 127, 206)",
   },
 });
-<<<<<<< HEAD
-function RightBody() {
-=======
 function RightBody({ zoom, setzoom }) {
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+  let dispatch = useDispatch();
+  let stock_Name = useSelector(stockSelect);
+  let company_Name = useSelector(companySelect);
+  let exchange_Name = useSelector(exchangeSelect)
+  
   function gtData() {
     let List = localStorage.getItem("StockLists");
 
@@ -79,10 +80,6 @@ function RightBody({ zoom, setzoom }) {
   const [clickonSell, setclickonsell] = useState(false);
   const [openholding, setopenholding] = useState(false);
   const [fullscreen, setfullscreen] = useState(false);
-<<<<<<< HEAD
-=======
-
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
   const timeframeChange = (event) => {
     settimeframe(event.target.value);
   };
@@ -141,11 +138,14 @@ function RightBody({ zoom, setzoom }) {
         setopensearch(false);
         setfilterData([]);
         setthreeeword(true);
+        dispatch(stockName(e.symbol));
+        
+  dispatch(companyName(e.name));
+  dispatch(exchangeName(e.exchange));
       }
     });
   };
-  console.log(chartype);
-  console.log(chartchange);
+
   const stockinfohanle = () => {
     if (symbolDetails) {
       setsymbolDetails(false);
@@ -153,8 +153,6 @@ function RightBody({ zoom, setzoom }) {
       setsymbolDetails(true);
     }
   };
-<<<<<<< HEAD
-=======
   const handlezoom = () => {
     if (zoom == false) {
       setzoom(true);
@@ -162,7 +160,7 @@ function RightBody({ zoom, setzoom }) {
       setzoom(false);
     }
   };
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+  
   return (
     <div className="rightbodycontent">
       <div className="Rightbody">
@@ -170,7 +168,9 @@ function RightBody({ zoom, setzoom }) {
           <div className="rightheaderleft">
             <div className="rightheaderlefticon">
               {" "}
-              <IconButton onClick={stockinfohanle}>
+              <IconButton onClick={stockinfohanle}
+              disabled = {stock_Name == ""? true:false}
+              >
                 <WidgetsIcon className="WidgetsIcon" />
               </IconButton>
             </div>
@@ -186,23 +186,8 @@ function RightBody({ zoom, setzoom }) {
               </IconButton>
             </div>
             <div className="rightheaderlefticon">
-              <IconButton>
-                <ModeEditOutlineIcon />
-              </IconButton>
-            </div>
-            <div className="rightheaderlefticon">
-<<<<<<< HEAD
-              <IconButton>
-                <AddIcon />
-              </IconButton>
-            </div>
-            <div className="rightheaderlefticon">
-              <IconButton>
-                <CommentIcon />
-=======
               <IconButton onClick={handlezoom}>
                 {zoom ? <ZoomInMapIcon /> : <ZoomOutMapIcon />}
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
               </IconButton>
             </div>
           </div>
@@ -210,7 +195,7 @@ function RightBody({ zoom, setzoom }) {
             <div className="optiontime">
               <FormControl sx={{ m: 1, minWidth: 20 }}>
                 <Select
-                  disabled={stocksymbol == "" ? true : false}
+                  disabled={stock_Name == "" ? true : false}
                   className={classes.formconrtrol}
                   value={timeframe}
                   onChange={(e) => timeframeChange(e)}
@@ -225,7 +210,7 @@ function RightBody({ zoom, setzoom }) {
               </FormControl>
               <FormControl sx={{ m: 1, minWidth: 20 }}>
                 <Select
-                  disabled={stocksymbol == "" ? true : false}
+                  disabled={stock_Name == "" ? true : false}
                   className={classes.formconrtrol}
                   value={chartype}
                   onChange={(e) => candlechartChange(e)}
@@ -306,6 +291,7 @@ function RightBody({ zoom, setzoom }) {
               setbuyorsells={setbuyorsells}
               setclickonBuy={setclickonBuy}
               setclickonsell={setclickonsell}
+           
             />
           </div>
         )}
@@ -316,16 +302,16 @@ function RightBody({ zoom, setzoom }) {
           <RightBodyChart
             stocksymbol={stocksymbol}
             companyname={companyname}
+            stock_Name={stock_Name}
             exchange={exchange}
             timeframe={timeframe}
             chartchange={chartchange}
             chartype={chartype}
             openholding={openholding}
-<<<<<<< HEAD
-=======
             fullscreen={fullscreen}
             zoom={zoom}
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+            exchange_Name={exchange_Name}
+              company_Name={company_Name}
           />
           {openoverview && (
             <div className="buy-sell-overview">

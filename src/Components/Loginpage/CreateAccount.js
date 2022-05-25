@@ -1,16 +1,5 @@
-// import React from "react";
 
-// function CreateAccount() {
-//   return <div>CreateAccount</div>;
-// }
-
-// export default CreateAccount;
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-<<<<<<< HEAD
-import axios from "axios";
-=======
-
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 import React, { useState } from "react";
 import "./CreateAccount.css";
 import TextField from "@mui/material/TextField";
@@ -20,6 +9,9 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
+import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 import { makeStyles } from "@mui/styles";
 
@@ -105,6 +97,9 @@ const PersonalForm = () => {
             margin="normal"
             {...field}
             required
+            inputProps={{
+    maxLength: 10
+  }}
           />
         )}
       />
@@ -123,11 +118,15 @@ const PaymentForm = () => {
             id="PANNumber"
             label="PAN Number"
             variant="outlined"
+            type={"text"}
             placeholder="Enter Your PAN Number"
             required
             fullWidth
             margin="normal"
             {...field}
+            inputProps={{
+    maxLength: 10
+  }}
           />
         )}
       />
@@ -151,6 +150,9 @@ const UserNameForm = () => {
             fullWidth
             margin="normal"
             {...field}
+            inputProps={{
+    minLength: 8
+  }}
           />
         )}
       />
@@ -176,43 +178,6 @@ function getStepContent(step) {
   }
 }
 
-<<<<<<< HEAD
-function getCookie(name) {
-  if (!document.cookie) {
-      return null;
-  }
-  
-  const xsrfCookies = document.cookie.split(';')
-      .map(c => c.trim())
-      .filter(c => c.startsWith(name + '='));
-  
-  if (xsrfCookies.length === 0) {
-      return null;
-  }
-  return decodeURIComponent(xsrfCookies[0].split('=')[1]);
-  }
-
-
-async function post_data(url,data){
-  axios.post('http://127.0.0.1:8000/userregister', {
-    'fname': data['FullName'].split(" ")[0],
-    'lname': data['FullName'].split(" ")[1],
-    'username':data['UserName'],
-    'email': data['emailAddress'],
-    'phoneno': data['phoneNumber'],
-    'panno': data['PANNumber'],
-    
-})
-    .then(res => {
-        console.log(res)
-    })
-    .catch(err => {
-        alert(err);
-    });
-}
-
-=======
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
 const CreateAccount = () => {
   const classes = useStyles();
   const methods = useForm({
@@ -228,6 +193,24 @@ const CreateAccount = () => {
   const [skippedSteps, setSkippedSteps] = useState([]);
   const steps = getSteps();
 
+  const send_data = (data) =>{
+    axios.post('/userregister', {
+      'fname':data['FullName'].split(" ")[0],
+      'lname':data['FullName'].split(" ")[1],
+      'username':data['UserName'],
+      'email':data['emailAddress'],
+      'phoneno':data['phoneNumber'],
+      'panno':data['PANNumber']
+  })
+  .then(res => {
+      console.log(res['data']['message'])
+      return true;
+  })
+  .catch(err =>{
+      alert(err);
+  });
+  }
+
   const isStepOptional = (step) => {
     return step === 1 || step === 2;
   };
@@ -237,19 +220,11 @@ const CreateAccount = () => {
   };
 
   const handleNext = (data) => {
-<<<<<<< HEAD
-=======
-    console.log(data);
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
     if (activeStep == steps.length - 1) {
       fetch("https://jsonplaceholder.typicode.com/comments")
         .then((data) => data.json())
         .then((res) => {
-<<<<<<< HEAD
-          post_data("http://127.0.0.1:8000/userregister",data)
-=======
-          console.log(res);
->>>>>>> 10cf40edf422501282ec78361204714d5fe7b71c
+          send_data(data)
           setActiveStep(activeStep + 1);
         });
     } else {
@@ -271,6 +246,24 @@ const CreateAccount = () => {
     setActiveStep(activeStep + 1);
   };
 
+  async function check_if_user_login(){
+    let response = await fetch('/check_userlogin')
+    if (response.ok) {
+      let json = await response.json();
+      let message = json['message'];
+      if (message == 'yes'){
+        window.location.replace('/Home')
+      }  
+  }
+  else {
+      alert("HTTP-Error: " + response.status);
+  }
+
+  }
+
+  useLayoutEffect(()=>{
+    check_if_user_login();
+  },[])
   // const onSubmit = (data) => {
   //   console.log(data);
   // };
@@ -301,7 +294,7 @@ const CreateAccount = () => {
 
         {activeStep === steps.length ? (
           <Typography variant="h3" align="center">
-            Thank You
+            Please Verify Your Email
           </Typography>
         ) : (
           <>

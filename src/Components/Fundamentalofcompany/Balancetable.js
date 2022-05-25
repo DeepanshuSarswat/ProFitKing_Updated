@@ -11,6 +11,7 @@ function Balancetable() {
       return [];
     }
   }
+  console.log(outputvalue)
   return (
     <div>
       <table class="content-table" width="100%">

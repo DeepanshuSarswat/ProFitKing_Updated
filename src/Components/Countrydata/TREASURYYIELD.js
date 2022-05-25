@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Chart from "react-apexcharts";
 import FEDERALFUNDSRATE from "./FEDERALFUNDSRATE";
+
 function TREASURYYIELD() {
   function gtData() {
     let List = localStorage.getItem("treasurytield");
@@ -85,12 +86,13 @@ function TREASURYYIELD() {
           options={state.options}
           series={state.series}
           type="bar"
-          width="1050"
+          width="1250"
           height="300"
         />
         Treasury yield
       </div>
       <FEDERALFUNDSRATE />
+   
     </div>
   );
 }

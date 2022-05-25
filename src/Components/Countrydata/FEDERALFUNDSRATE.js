@@ -91,7 +91,7 @@ function FEDERALFUNDSRATE() {
           options={state.options}
           series={state.series}
           type="bar"
-          width="1050"
+          width="1250"
           height="300"
         />
         FEDERAL FUNDS RATE
