@@ -137,6 +137,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'build/static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'build/images')
 CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 
+
 CSRF_COOKIE_NAME = "X-CSRFToken"
 
 AUTH_USER_MODEL = "stocksapi.User1" 
