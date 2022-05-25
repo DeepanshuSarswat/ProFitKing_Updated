@@ -200,8 +200,11 @@ class updateuser(APIView):
                 if person.is_verified == 0:
                     # match timestamp code here
                     cur_time = datetime.now()
-                    pre_time = person.timestamp
-                    del_time = str(cur_time-pre_time)
+                    print('cur_time',(cur_time))
+                    pre_time = str(person.timestamp)
+                    pre_time = pre_time.split('+')[0]
+                    pre_time = datetime.strptime(pre_time, '%Y-%m-%d %H:%M:%S.%f')
+                    del_time = str(cur_time-pre_time)    
                     del_time = del_time.split(':')
                     if del_time[0] != '0':
                         # delete entry from database
