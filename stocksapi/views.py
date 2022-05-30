@@ -321,8 +321,8 @@ class password_reset(APIView):
         
         u_obj=User1.objects.filter(email=email)
         
-        if u_obj is None:
-            return Response({'status':HTTP_400_BAD_REQUEST,'message':'User deoes not exists'})
+        if len(u_obj)==0:
+            return Response({'status':HTTP_200_OK,'message':'User deoes not exists'})
         else:
             for data in u_obj:
                 if not data.is_verified:

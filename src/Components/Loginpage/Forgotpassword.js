@@ -4,9 +4,12 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import "./Forgotpassword.css";
+import CircularProgress from '@mui/material/CircularProgress';
+
 function Forgotpassword() {
   const [enteremail,setenteremail] = useState("");
-
+  const [message,setmessage] = useState("");
+  const [loading,setloading] = useState(false)
   const getCookie =(name) =>{
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -41,10 +44,20 @@ function Forgotpassword() {
   if (response.ok) {
       let json = await response.json();
       let message = json["message"]
-      console.log(message)
+      if(message=='success'){
+        setenteremail("")
+        setmessage("please Check Your E-mail Inbox 🙂")
+        setloading(false)
+        
+      }
+      else{
+      setmessage(message)
+      setloading(false)
+      }
   }
   else {
       alert("HTTP-Error: " + response.status);
+      
   }
   }
 
@@ -52,6 +65,7 @@ function Forgotpassword() {
 
 
   const handlemail=(e)=>{
+    setloading(true)
     e.preventDefault();
     send_reset_link()
   }
@@ -75,6 +89,7 @@ function Forgotpassword() {
               variant="standard"
               fullWidth
               type="email"
+              disabled={loading?true:false}
               onChange={(e) => setenteremail(e.target.value)}
             />
             <p className="Continue-btns">
@@ -83,13 +98,20 @@ function Forgotpassword() {
                 size="large"
                 fullWidth
                 type="submit"
-                disabled={enteremail=="" ? true : false}
+                disabled={enteremail=="" || loading ? true : false}
               >
-                Continue
+               { loading? <CircularProgress color="inherit" className="loading" /> :"Continue" }
               </Button>
+              
             </p>
           </form>
         </p>
+        {
+        message !="" &&(
+          <p className="msg">{message}</p>
+        )
+      
+      }
       </div>
     </div>
   );

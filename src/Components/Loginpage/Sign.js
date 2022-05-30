@@ -6,12 +6,12 @@ import axios from "axios";
 import { useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Sign.css";
-
+import CircularProgress from '@mui/material/CircularProgress';
 function Sign() {
   const [username, setusername] = useState("");
   const [userpassword, setuserpassword] = useState("");
-
-
+  const [loading,setloading] = useState(false);
+  const [message,setmessage] = useState("");
   async function check_if_user_login(){
     let response = await fetch('/check_userlogin')
     if (response.ok) {
@@ -33,6 +33,7 @@ function Sign() {
 
 
   const submit_data = ()=>{
+    setloading(true)
       const get_username = username;
       const get_pass = userpassword;
       axios.post('/userlogin', {
@@ -45,7 +46,10 @@ function Sign() {
         if(msg=='success'){
           window.location.replace('/Home')
         }
-
+        else{
+          setloading(false)
+          setmessage(msg)
+        }
     })
     .catch(err =>{
         alert(err);
@@ -66,7 +70,7 @@ function Sign() {
             Forgot Password?
           </Link>
         </p>
-        <p className="Hii">Hi Deepanshu</p>
+        <p className="Hii">Hi User</p>
         <p className="welcome">Welcome back</p>
         <p className="Enter-digit">Enter Your User Name</p>
         <p className="input-six">
@@ -76,6 +80,7 @@ function Sign() {
             fullWidth
             type={"text"}
             onChange={(e) => setusername(e.target.value)}
+            disabled={loading ?true :false}
           />
         </p>
         <p className="Enter-digit">Enter Your Password</p>
@@ -84,6 +89,7 @@ function Sign() {
             id="standard-basic"
             variant="standard"
             fullWidth
+            disabled={loading ?true :false}
             type={"password"}
             onChange={(e) => setuserpassword(e.target.value)}
             inputProps={{
@@ -99,13 +105,22 @@ function Sign() {
             variant="contained"
             size="large"
             fullWidth
-            disabled={!username && !userpassword ? true : false}
+            disabled={!username && !userpassword || loading ? true : false}
+            
             onClick = {submit_data}
           >
-            Continue
+            
+            { loading? <CircularProgress color="inherit" className="loading" /> :"Continue" }
           </Button>
+
         </p>
       </div>
+      {
+        message !="" &&(
+          <p className="msg">{message}</p>
+        )
+      
+      }
     </div>
   );
 }

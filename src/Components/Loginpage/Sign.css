@@ -81,3 +81,14 @@ text-align: center;
   display: block;
   padding-left: 12px;
 }
+.msg{
+  text-align: center;
+ 
+  color: rgb(255, 99, 99);
+  font-weight: 600;
+  margin: auto;
+  margin-top: 14px;
+  padding: 12px;
+  width: 40%;
+  border-radius: 6px;
+}
