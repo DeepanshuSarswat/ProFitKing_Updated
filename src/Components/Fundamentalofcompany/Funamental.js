@@ -190,14 +190,7 @@ function Funamental() {
 
       <FundamentalData stocksymbol={stocksymbol} />
 
-      {/* <div className="fundamental-body">
-          <p className="funda-body">
-            <img src="images/fundaimg.svg" className="funda-body-img" />
-          </p>
-          <p className="funda-body-texts">
-            Stock analysis and screening tool for investors in America.
-          </p>
-        </div>  */}
+   
       <div className="Gototop">
         <button
           onClick={GotoTop}
