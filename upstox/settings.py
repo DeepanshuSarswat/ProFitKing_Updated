@@ -144,7 +144,7 @@ CSRF_COOKIE_NAME = "X-CSRFToken"
 AUTH_USER_MODEL = "stocksapi.User1" 
 
 SITE_URL='https://profitking.herokuapp.com/'
-PASS_MAIL='74123586'
+PASS_MAIL='uyrbxocyeyditpdx'
 MAIL_SENDER='no.reply.profitking@gmail.com'
 
 
