@@ -82,10 +82,21 @@ WSGI_APPLICATION = 'upstox.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8v65ocheog3pc',
+        'USER': 'xdmugezviwrahz',
+        'PASSWORD': '3414aa95577485c5659b3ae9f383c5d2285494114399033caf9cefafe8e9eb36',
+        'HOST': 'ec2-3-228-235-79.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
