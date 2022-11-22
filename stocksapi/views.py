@@ -10,7 +10,6 @@ from rest_framework.views import APIView
 import smtplib
 from datetime import timezone
 import datetime
-from datetime import datetime
 from random import choice
 from email.message import EmailMessage
 from django.conf import settings
@@ -20,6 +19,7 @@ from .models import *
 from django.views.decorators.csrf import csrf_exempt
 from .serializers import *
 from datetime import timedelta
+from datetime import datetime
 
 def generate_random_unicode():
         # logic to generate code
@@ -275,7 +275,7 @@ class register(APIView):
 
         status = send_mail(email_r, personalcode)
 
-        user=User1.objects.create_user(username = username,email=email_r, first_name=first_name,last_name=last_name,unicode=personalcode, timestamp=datetime.now(),phone_no =phone_r,pan_no = pan_no)
+        user=User1.objects.create_user(username = username,email=email_r, first_name=first_name,last_name=last_name,unicode=personalcode, timestamp=datetime.now,phone_no =phone_r,pan_no = pan_no)
         user.save();
 
         return Response({'status':HTTP_200_OK,'message':'Success'})
