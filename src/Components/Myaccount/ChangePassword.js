@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 function ChangePasssword() {
   const [enterpassword,setenterpassword] = useState("");
   const [reenterpassword,setreenterpassword] = useState("");
+  const [userData, setuserData] = useState(null);
 
   const getCookie =(name) =>{
     var cookieValue = null;
@@ -55,6 +56,25 @@ const handlepassword = (e)=>{
   change_pass()
 }
 
+async function get_user_data(){
+  let response = await fetch('/userdata')
+  if (response.ok) {
+    let json = await response.json();
+    let message = json['message'];
+    if (message == 'success')
+      setuserData(json['data'])
+}
+else {
+    alert("HTTP-Error: " + response.status);
+}
+
+}
+
+useEffect(()=>{
+  get_user_data()
+},[])
+
+
   return (
     <div className="Sig-n">
        <div className="Login-h-l Sign-h-l">
@@ -64,7 +84,7 @@ const handlepassword = (e)=>{
         </p>
       </div>
       <div className="Sign-in-user">
-        <p className="Hii">Hi Deepanshu</p>
+        <p className="Hii">Hi {userData?.first_name} {userData?.last_name}</p>
         <p className="welcome">Welcome back</p>
         <p className="Enter-digit">Enter Your New Password</p>
         <p className="input-six">

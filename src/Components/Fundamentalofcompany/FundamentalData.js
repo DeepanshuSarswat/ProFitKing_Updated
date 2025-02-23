@@ -12,7 +12,10 @@ function FundamentalData({ stocksymbol }) {
       return [];
     }
   }
-console.log(Object.keys(overviewData).length)
+
+  console.log(stocksymbol, "stocksymbol-stocksymbol");
+  
+
   return (
     <>
     {
