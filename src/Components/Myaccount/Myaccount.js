@@ -70,11 +70,6 @@ function Myaccount() {
             </div>
           </div>
         </div>
-        <p className="p-and-l">
-          <Link to="/Myaccount/ProfitandLoss" target={"_blank"}>
-            Your Profit and Loss
-          </Link>
-        </p>
       </div>
     </div>
   );

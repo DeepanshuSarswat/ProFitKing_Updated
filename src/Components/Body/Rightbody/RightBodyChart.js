@@ -123,7 +123,8 @@ function RightBodyChart({
                 type={chartype}
                 className="chartDatass"
                 // height={zoom ? 450 : openholding ? 160 : 355}
-                height={zoom ? "560vh" : "480vh"}
+                height={zoom ? "660vh" : "580vh"}
+                width={"100%"}
                 
               
 

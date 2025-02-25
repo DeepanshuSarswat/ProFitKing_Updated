@@ -1,5 +1,6 @@
 .Funamental {
   background-color: #e0f2fe;
+  overflow: hidden;
 }
 .fundamental-body {
   height: 85vh;

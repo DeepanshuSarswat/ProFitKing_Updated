@@ -143,6 +143,7 @@ function Header() {
       let message = json['message'];
       if (message == 'success'){
       let share_data = json['share_data'];
+      console.log(share_data, "happpy");
       
       setwebData(share_data)
     }
@@ -186,7 +187,8 @@ function Header() {
   if (response.ok) {
     let json = await response.json();
     let message = json['message'];
-
+    console.log(json, "happpy-json");
+    
     if (message == 'success'){
       setaccountblnc(json['data'])}
 }
@@ -208,6 +210,8 @@ let allthreeprices  = [appleprice,Infyprice,tRPprice]
 React.useEffect(()=>{
   dispatch(defaultwatchName(allthreeprices))
 },[appleprice])
+
+
   return (
     <div className="Header">
       <div className="Header_left">
@@ -338,7 +342,7 @@ React.useEffect(()=>{
                 </div>
                 <div className="right-body-fund-box">
                   <p className="tm-fund-box">Used margin</p>
-                  <p className="tm-fund-box">₹ 0.00</p>
+                  <p className="tm-fund-box">₹ {accountblnc.used_fund}</p>
                 </div>
               </div>
 
@@ -369,7 +373,7 @@ React.useEffect(()=>{
                 width="500"
               />
             </div>
-            <p className="total-funds">Total Fund - {(accountblnc.account_balance + accountblnc.used_fund).toFixed(2)}</p>
+            {/* <p className="total-funds">Total Fund - 50,000</p> */}
           </div>
         </div>
       )}

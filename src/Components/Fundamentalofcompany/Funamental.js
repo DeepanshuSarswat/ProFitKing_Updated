@@ -52,65 +52,103 @@ function Funamental() {
   };
 
   const clickonstock = (data) => {
-    datas.forEach((e) => {
-      if (e.name == data) {
-        localStorage.setItem("clickedstocks", JSON.stringify(e));
+    const stock = datas.find((e) => e.name === data);
+    
+    if (stock) {
+      const { symbol } = stock;
+  
+      setstocksymbol(symbol);
+      // BalancesheetData(symbol);
+      setfilterData([]);
+      setthreeeword(false);
+      // gttData(symbol);
+      // epsData(symbol);
+      // totalRevenue(symbol);
+      fetchData(symbol);
+    }
 
-        setstocksymbol(e.symbol);
-        BalancesheetData();
-        setfilterData([]);
-        setthreeeword(false);
-        gttData(e.symbol);
-        epsData(e.symbol);
-        totalRevenue(e.symbol);
-        BalancesheetData(e.symbol);
-        setTimeout(() => {
+     setTimeout(() => {
           window.location.reload(false);
-        }, 2000);
-      }
-    });
+        }, 9000);
   };
-  function gttData(e) {
-    fetch(
-      `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${e}&apikey=2KWEIOOBNB82EHKZ`
-    )
-      .then((respponse) => respponse.json())
-      .then((data) => {
-        console.log(data);
+  
+  // function gttData(e) {
+  //   fetch(
+  //     `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${e}&apikey=2KWEIOOBNB82EHKZ`
+  //   )
+  //     .then((respponse) => respponse.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       localStorage.setItem("overviewData", JSON.stringify(data));
+  //     });
+  // }
+  // function epsData(e) {
+  //   fetch(
+  //     `https://www.alphavantage.co/query?function=EARNINGS&symbol=${e}&apikey=55RB6VW5QMERT6HW`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       localStorage.setItem("eps", JSON.stringify(data));
+  //     });
+  // }
+  // function totalRevenue(e) {
+  //   fetch(
+  //     `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${e}&apikey=2A6AAA2W48C4FBJM`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       localStorage.setItem("totalRevenue", JSON.stringify(data));
+  //     });
+  // }
+  // function BalancesheetData(e) {
+  //   fetch(
+  //     `https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=${e}&apikey=H425ECFTGFPLCQ4K`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       localStorage.setItem("Balancesheet", JSON.stringify(data));
+  //     });
+  // }
 
-        localStorage.setItem("overviewData", JSON.stringify(data));
+  function fetchData(symbol) {
+    const apiCalls = [
+      fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=2KWEIOOBNB82EHKZ`)
+        .then((res) => res.json())
+        .then((data) => localStorage.setItem("overviewData", JSON.stringify(data))),
+  
+      fetch(`https://www.alphavantage.co/query?function=EARNINGS&symbol=${symbol}&apikey=55RB6VW5QMERT6HW`)
+        .then((res) => res.json())
+        .then((data) => localStorage.setItem("eps", JSON.stringify(data))),
+  
+      fetch(`https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${symbol}&apikey=2A6AAA2W48C4FBJM`)
+        .then((res) => res.json())
+        .then((data) => localStorage.setItem("totalRevenue", JSON.stringify(data))),
+  
+      fetch(`https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=${symbol}&apikey=H425ECFTGFPLCQ4K`)
+        .then((res) => res.json())
+        .then((data) => localStorage.setItem("Balancesheet", JSON.stringify(data)))
+    ];
+  
+    // Wait for all API requests to complete before reloading the page
+    Promise.all(apiCalls)
+      .then(() => {
+        console.log("All API requests completed successfully");
+        window.location.reload(false); // Reload the page
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }
-  function epsData(e) {
-    fetch(
-      `https://www.alphavantage.co/query?function=EARNINGS&symbol=${e}&apikey=55RB6VW5QMERT6HW`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem("eps", JSON.stringify(data));
-      });
-  }
-  function totalRevenue(e) {
-    fetch(
-      `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${e}&apikey=2A6AAA2W48C4FBJM`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem("totalRevenue", JSON.stringify(data));
-      });
-  }
-  function BalancesheetData(e) {
-    fetch(
-      `https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=${e}&apikey=H425ECFTGFPLCQ4K`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem("Balancesheet", JSON.stringify(data));
-      });
-  }
+  
+  // Call fetchData(symbol) wherever needed
+  
+
+
+
+
   let [arrow, setarrow] = useState("none");
   let GotoTop = () => {
     document.documentElement.scrollTop = 0;
@@ -130,6 +168,9 @@ function Funamental() {
       setarrow("none");
     }
   }
+
+  console.log(stocksymbol, "stocksymbol-stocksymbol");
+  
   return (
     <div className="Funamental">
       <div className="Fundamental-header">
