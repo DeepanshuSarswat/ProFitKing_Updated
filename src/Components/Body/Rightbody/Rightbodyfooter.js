@@ -5,6 +5,7 @@ import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
 import { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getorderersName } from "../../../features/stockSlice";
+import { BASE_URL } from "../../../Contants/constant";
 const orderData = ["Symbol","Status","Time","Product","Quantity","Order Price","Order Type","Amount	"];
 const positionData = ["Symbol","Product","Net Qty","Avg. Price","Order Type","LTP","P&L"];
 const HoldingData = ["Symbol","Net Qty","Avg. Price","LTP","Current Value","P&L"]
@@ -66,7 +67,7 @@ function Rightbodyfooter({
   };
 
   async function get_orders(){
-    let response = await fetch('/get_orders')
+    let response = await fetch(BASE_URL + '/get_orders')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];

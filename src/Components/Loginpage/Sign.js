@@ -7,13 +7,14 @@ import { useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Sign.css";
 import CircularProgress from '@mui/material/CircularProgress';
+import { BASE_URL } from "../../Contants/constant";
 function Sign() {
   const [username, setusername] = useState("");
   const [userpassword, setuserpassword] = useState("");
   const [loading,setloading] = useState(false);
   const [message,setmessage] = useState("");
   async function check_if_user_login(){
-    let response = await fetch('/check_userlogin')
+    let response = await fetch(BASE_URL + '/check_userlogin')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];
@@ -36,7 +37,7 @@ function Sign() {
     setloading(true)
       const get_username = username;
       const get_pass = userpassword;
-      axios.post('/userlogin', {
+      axios.post(BASE_URL + '/userlogin', {
         'username':username,
         'password':userpassword
     })

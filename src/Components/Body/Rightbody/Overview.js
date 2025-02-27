@@ -11,6 +11,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useSelector } from "react-redux";
 import { getorderersSelect, NetprofitSelect, stockSelect } from "../../../features/stockSlice";
 import { useLayoutEffect } from "react";
+import { BASE_URL } from "../../../Contants/constant";
 
 
 function Overview({
@@ -62,7 +63,7 @@ function Overview({
   const csrftoken = getCookie('X-CSRFToken');
 
   async function get_share_details(){
-    let response = await fetch('/get_share_details', {
+    let response = await fetch(BASE_URL + '/get_share_details', {
       credentials: 'include',
       method: 'POST',
       mode: 'same-origin',
@@ -90,7 +91,7 @@ function Overview({
 
 
   async function buy_stock(){
-    let response = await fetch('/buy_stock', {
+    let response = await fetch(BASE_URL + '/buy_stock', {
       credentials: 'include',
       method: 'POST',
       mode: 'same-origin',
@@ -130,7 +131,7 @@ function Overview({
 
 
   async function sell_stock(){
-    let response = await fetch('/sell_stock', {
+    let response = await fetch(BASE_URL + '/sell_stock', {
       credentials: 'include',
       method: 'POST',
       mode: 'same-origin',

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { BASE_URL } from "../../Contants/constant";
 
 function ChangePasssword() {
   const [enterpassword,setenterpassword] = useState("");
@@ -26,7 +27,7 @@ function ChangePasssword() {
   const csrftoken = getCookie('X-CSRFToken');
 
   async function change_pass(){
-    let response = await fetch('/changepassword', {
+    let response = await fetch(BASE_URL + '/changepassword', {
       credentials: 'include',
       method: 'POST',
       mode: 'same-origin',
@@ -57,7 +58,7 @@ const handlepassword = (e)=>{
 }
 
 async function get_user_data(){
-  let response = await fetch('/userdata')
+  let response = await fetch(BASE_URL + '/userdata')
   if (response.ok) {
     let json = await response.json();
     let message = json['message'];

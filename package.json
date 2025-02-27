@@ -2,7 +2,6 @@
   "name": "upstox",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://profitking-backend.onrender.com",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -13,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
+    "ajv": "^8.12.0",
     "apexcharts": "^3.35.0",
     "axios": "^0.24.0",
     "chart-library": "^1.2.1",

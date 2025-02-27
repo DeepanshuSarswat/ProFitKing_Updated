@@ -21,6 +21,7 @@ import {
   FormProvider,
   useFormContext,
 } from "react-hook-form";
+import { BASE_URL } from "../../Contants/constant";
 
 const useStyles = makeStyles({
   button: {
@@ -194,7 +195,7 @@ const CreateAccount = () => {
   const steps = getSteps();
 
   const send_data = (data) =>{
-    axios.post('/userregister', {
+    axios.post(BASE_URL + '/userregister', {
       'fname':data['FullName'].split(" ")[0],
       'lname':data['FullName'].split(" ")[1],
       'username':data['UserName'],
@@ -247,7 +248,7 @@ const CreateAccount = () => {
   };
 
   async function check_if_user_login(){
-    let response = await fetch('/check_userlogin')
+    let response = await fetch(BASE_URL + '/check_userlogin')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];

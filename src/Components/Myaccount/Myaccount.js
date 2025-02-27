@@ -4,11 +4,12 @@ import "./Myaccount.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import { BASE_URL } from "../../Contants/constant";
 
 function Myaccount() {
   const [myData,setmyData] = useState([]);
   async function get_user_data(){
-    let response = await fetch('/userdata')
+    let response = await fetch(BASE_URL + '/userdata')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];

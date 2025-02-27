@@ -5,6 +5,7 @@ import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import axios from "axios";
+import { BASE_URL } from "../../../Contants/constant";
 
 
 function Addwatchlistelement({
@@ -72,7 +73,7 @@ function Addwatchlistelement({
   const csrftoken = getCookie('X-CSRFToken');
 
   async function add_share(s,wt){
-    let response = await fetch('/addwatchlist', {
+    let response = await fetch(BASE_URL + '/addwatchlist', {
       credentials: 'include',
       method: 'POST',
       mode: 'same-origin',

@@ -18,6 +18,7 @@ import { companyName, defaultwatchSelect, exchangeName, exchangeSelect, stockNam
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useLayoutEffect } from "react";
+import { BASE_URL } from "../../../Contants/constant";
 const color = "blue";
 const useStyle = makeStyles({
   formconrtrol: {
@@ -154,7 +155,7 @@ const [watchlstelement,setwatchlstelement] = useState([]);
   const csrftoken = getCookie('X-CSRFToken');
 
   async function get_watch_list(){
-    let response = await fetch('/GetWatchList')
+    let response = await fetch(BASE_URL +  '/GetWatchList')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];
@@ -170,7 +171,7 @@ const [watchlstelement,setwatchlstelement] = useState([]);
   }
 
   async function update_wtachlist(id,name){
-    let response = await fetch('/EditWatchList', {
+    let response = await fetch(BASE_URL +  '/EditWatchList', {
       credentials: 'include',
       method: 'POST',
       mode: 'same-origin',
@@ -195,7 +196,7 @@ const [watchlstelement,setwatchlstelement] = useState([]);
   }
 
   async function delete_watch_list(id){
-    let response = await fetch('/deleteWatchList', {
+    let response = await fetch(BASE_URL +  '/deleteWatchList', {
       credentials: 'include',
       method: 'POST',
       mode: 'same-origin',
@@ -228,7 +229,7 @@ const [watchlstelement,setwatchlstelement] = useState([]);
 
 
   async function add_watch(e,f){
-    let response = await fetch('/CreateWatchList', {
+    let response = await fetch(BASE_URL +  '/CreateWatchList', {
       credentials: 'include',
       method: 'POST',
       mode: 'same-origin',

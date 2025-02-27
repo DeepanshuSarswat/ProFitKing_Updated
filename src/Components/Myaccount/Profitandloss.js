@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { useLayoutEffect } from "react";
 import "./Profitandloss.css";
+import { BASE_URL } from "../../Contants/constant";
 function Profitandloss() {
 const [profitlossData,setprofitlossData] = useState([]);
   async function get_pandf(){
-    let response = await fetch('/getpandf')
+    let response = await fetch(BASE_URL + '/getpandf')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];

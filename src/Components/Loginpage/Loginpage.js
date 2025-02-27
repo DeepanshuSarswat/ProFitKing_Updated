@@ -3,10 +3,11 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import "./Loginpage.css";
 import { Link } from "react-router-dom";
 import { useLayoutEffect } from "react";
+import { BASE_URL } from "../../Contants/constant";
 
 function Loginpage() {
   async function check_if_user_login(){
-    let response = await fetch('/check_userlogin')
+    let response = await fetch(BASE_URL + '/check_userlogin')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];

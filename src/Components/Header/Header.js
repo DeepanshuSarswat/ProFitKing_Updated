@@ -14,6 +14,7 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useLayoutEffect } from "react";
 import { defaultwatchName, NetProfitName } from "../../features/stockSlice";
 import { useDispatch } from "react-redux";
+import { BASE_URL } from "../../Contants/constant";
 function Header() {
  
   const dispatch = useDispatch();
@@ -71,7 +72,7 @@ function Header() {
   };
 
   async function check_if_user_login(){
-    let response = await fetch('/check_userlogin')
+    let response = await fetch(BASE_URL + '/check_userlogin')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];
@@ -137,7 +138,7 @@ function Header() {
   },[])
 
   async function get_profit_list(){
-    let response = await fetch('/GetProfitList')
+    let response = await fetch(BASE_URL + '/GetProfitList')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];
@@ -160,7 +161,7 @@ function Header() {
 
 
   async function logout_user(){
-    let response = await fetch('/userlogout')
+    let response = await fetch(BASE_URL + '/userlogout')
     if (response.ok) {
       let json = await response.json();
       let message = json['message'];
@@ -183,7 +184,7 @@ function Header() {
  }
 
  async function get_balances(){
-  let response = await fetch('/get_balances')
+  let response = await fetch(BASE_URL + '/get_balances')
   if (response.ok) {
     let json = await response.json();
     let message = json['message'];

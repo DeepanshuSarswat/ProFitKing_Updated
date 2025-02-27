@@ -4,13 +4,14 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import { BASE_URL } from "../../Contants/constant";
 
 function Verify() {
     const [Verifyusername, setVerifyusername] = useState("");
     const[verifypage,setverifypage] = useState(false);
     const submit_data = ()=>{
         const get_pid = window.location.href.split("#")[0].split('/')[4]
-        axios.post(`/verify/verifyacc/${get_pid}`, {
+        axios.post(BASE_URL + `/verify/verifyacc/${get_pid}`, {
           'unamm':Verifyusername
       })
       .then(res => {
